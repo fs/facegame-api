@@ -9,7 +9,7 @@ blocks:
   - name: Deploy
     task:
       secrets:
-        - name: rails-base-graphql-api-heroku
+        - name: facegame-heroku
       env_vars:
         - name: HEROKU_REMOTE
           value: https://git.heroku.com/rails-base-graphql-api.git
