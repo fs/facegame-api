@@ -14,7 +14,7 @@ module Omniauth
       private
 
       def user
-        @user ||= User.find_or_create_by(email: email).tap do |user|
+        @user ||= User.find_or_create_by(email: email) do |user|
           user.first_name = given_name
           user.last_name = family_name
           user.password = SecureRandom.hex(20)
