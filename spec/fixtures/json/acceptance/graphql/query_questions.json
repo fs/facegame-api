@@ -1,0 +1,30 @@
+{
+  "data": {
+    "questions": [
+      {
+        "avatarUrl": null,
+        "department": "ios",
+        "email": "email1@example.com",
+        "fullName": "Name1",
+        "id": "2",
+        "wrongAnswers": [
+          "Name2",
+          "Name3",
+          "Name4"
+        ]
+      }, 
+      {
+        "avatarUrl": null,
+        "department": "ios",
+        "email": "email2@example.com",
+        "fullName": "Name2",
+        "id": "3",
+        "wrongAnswers": [
+          "Name1",
+          "Name3",
+          "Name4"
+        ]
+      }
+    ]
+  }
+}
