@@ -3,6 +3,7 @@
 module Resolvers
   class Questions < Resolvers::Base
     include AuthenticableGraphqlUser
+    include ExecutionErrorResponder
 
     argument :limit, Integer, required: false
     argument :sort_by, String, required: false

@@ -32,4 +32,10 @@ describe Types::QueryType do
     let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
     let(:fixture_path) { "json/acceptance/graphql/query_questions.json" }
   end
+
+  context "with unauthenticated user" do
+    it_behaves_like "graphql request", "gets current_user info" do
+      let(:fixture_path) { "json/acceptance/graphql/query_questions_wrong.json" }
+    end
+  end
 end
