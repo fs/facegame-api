@@ -51,6 +51,8 @@ GEM
     activerecord (6.0.4.1)
       activemodel (= 6.0.4.1)
       activesupport (= 6.0.4.1)
+    activerecord-import (1.2.0)
+      activerecord (>= 3.2)
     activestorage (6.0.4.1)
       actionpack (= 6.0.4.1)
       activejob (= 6.0.4.1)
@@ -211,7 +213,7 @@ GEM
     multi_json (1.15.0)
     multipart-post (2.1.1)
     newrelic_rpm (6.11.0.365)
-    nio4r (2.5.7)
+    nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
@@ -222,7 +224,7 @@ GEM
     pg (1.2.3)
     promise.rb (0.7.4)
     public_suffix (4.0.6)
-    puma (4.3.8)
+    puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -350,6 +352,7 @@ PLATFORMS
 
 DEPENDENCIES
   action_policy-graphql
+  activerecord-import
   aws-sdk-s3
   bcrypt
   bootsnap

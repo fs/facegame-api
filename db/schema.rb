@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_055316) do
+ActiveRecord::Schema.define(version: 2021_10_13_070901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 2021_10_11_055316) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "result_id", null: false
+    t.bigint "question_id", null: false
+    t.string "value"
+    t.boolean "correct", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["result_id"], name: "index_answers_on_result_id"
   end
 
   create_table "possession_tokens", force: :cascade do |t|
@@ -55,6 +66,14 @@ ActiveRecord::Schema.define(version: 2021_10_11_055316) do
     t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "score", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
     t.string "first_name"
@@ -71,6 +90,9 @@ ActiveRecord::Schema.define(version: 2021_10_11_055316) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "results"
   add_foreign_key "possession_tokens", "users"
   add_foreign_key "refresh_tokens", "users"
+  add_foreign_key "results", "users"
 end
