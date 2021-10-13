@@ -1,0 +1,19 @@
+{
+  "data": {
+    "createResult": null
+  },
+  "errors": [
+    {
+      "message": "One of the questions not found",
+      "extensions": {
+        "status": 404,
+        "code": "not_found",
+        "detail": null
+      },
+      "locations": [
+        { "line": 2, "column": 9 }
+      ],
+      "path": ["createResult"]
+    }
+  ]
+}

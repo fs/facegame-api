@@ -46,7 +46,7 @@ class CreateResult
     end
 
     def error_data
-      { message: "One of the questions not found" }
+      { message: "One of the questions not found", code: :not_found, status: 404 }
     end
   end
 end
