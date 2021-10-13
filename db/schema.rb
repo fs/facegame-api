@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2021_10_13_070901) do
   create_table "results", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "score", default: 0, null: false
-    t.integer "time_duration", default: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_results_on_user_id"
