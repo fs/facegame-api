@@ -4,5 +4,6 @@ class CreateResult
 
   organize CreateResult::PrepareParams,
            CreateResult::SaveModel,
-           CreateResult::CreateAnswers
+           CreateResult::CreateAnswers,
+           CreateResult::UpdateUserScore
 end
