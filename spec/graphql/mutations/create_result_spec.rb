@@ -55,6 +55,31 @@ describe Mutations::CreateResult do
     end
   end
 
+  context "with empty answers" do
+    let(:schema_context) { { current_user: user } }
+
+    let(:query) do
+      <<-GRAPHQL
+        mutation {
+          createResult (
+            input: {
+              answers: []
+            }
+          ) {
+            score
+            answers {
+              value
+            }
+          }
+        }
+      GRAPHQL
+    end
+
+    it_behaves_like "graphql request", "returns updated user info" do
+      let(:fixture_path) { "json/acceptance/graphql/create_result/empty_answers.json" }
+    end
+  end
+
   context "with incorrect data" do
     let(:schema_context) { { current_user: user } }
 
