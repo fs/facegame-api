@@ -29,6 +29,8 @@ class CreateResult
     end
 
     def calculate_score
+      return 0 if prepared_answers_params.count.zero?
+
       (correct_answers_count.to_f * correct_answers_count / prepared_answers_params.count * 100).round
     end
 
