@@ -1,0 +1,30 @@
+{
+  "data": {
+    "resultsBoard": {
+      "topResults": [
+        {
+          "rate": 1,
+          "fullName": "Rochell Jon",
+          "score": 500
+        },
+        {
+          "rate": 2,
+          "fullName": "Rosalva Lashay",
+          "score": 400
+        },
+        {
+          "rate": 3,
+          "fullName": "Jaunita Desirae",
+          "score": 150
+        }
+      ],
+      "currentUserResult": {
+        "rate": 4,
+        "fullName": "Sommer Celena",
+        "score": 133,
+        "questionsCount": 3,
+        "correctAnswersCount": 2
+      }
+    }
+  }
+}

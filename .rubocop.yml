@@ -115,6 +115,9 @@ Layout/SpaceAroundMethodCallOperator:
 Metrics/BlockLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
