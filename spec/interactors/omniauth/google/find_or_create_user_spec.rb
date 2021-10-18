@@ -12,6 +12,7 @@ describe Omniauth::Google::FindOrCreateUser do
     allow(user_info).to receive(:given_name).and_return("FirstName")
     allow(user_info).to receive(:family_name).and_return("LastName")
     allow(user_info).to receive(:email).and_return("user@example.com")
+    allow(user_info).to receive(:picture).and_return("spec/fixtures/images/avatar.jpg")
   end
 
   describe ".call" do
@@ -22,6 +23,8 @@ describe Omniauth::Google::FindOrCreateUser do
           last_name: "LastName",
           email: "user@example.com"
         )
+
+        expect(context.user.avatar_url).not_to be_nil
 
         expect(context.user).to be_persisted
       end

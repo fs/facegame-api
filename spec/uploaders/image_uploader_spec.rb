@@ -20,23 +20,6 @@ describe ImageUploader do
     end
   end
 
-  context "with wrong extension and mime type" do
-    let(:image_path) { "spec/fixtures/files/test.txt" }
-    let(:error_messages) do
-      {
-        avatar: [
-          "type must be one of: image/jpeg, image/png, image/webp",
-          "extension must be one of: jpg, jpeg, png, webp"
-        ]
-      }
-    end
-
-    it "raises error" do
-      expect(user).not_to be_persisted
-      expect(user.errors.messages).to eq(error_messages)
-    end
-  end
-
   context "with wrong mime type" do
     let(:image_path) { "spec/fixtures/files/fake_image.png" }
     let(:error_messages) do
