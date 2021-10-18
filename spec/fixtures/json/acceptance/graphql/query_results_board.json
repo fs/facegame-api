@@ -5,17 +5,20 @@
         {
           "rate": 1,
           "fullName": "Rochell Jon",
-          "score": 500
+          "score": 500,
+          "avatarUrl": null
         },
         {
           "rate": 2,
           "fullName": "Rosalva Lashay",
-          "score": 400
+          "score": 400,
+          "avatarUrl": null
         },
         {
           "rate": 3,
           "fullName": "Jaunita Desirae",
-          "score": 150
+          "score": 150,
+          "avatarUrl": null
         }
       ],
       "currentUserResult": {
@@ -23,7 +26,8 @@
         "fullName": "Sommer Celena",
         "score": 133,
         "questionsCount": 3,
-        "correctAnswersCount": 2
+        "correctAnswersCount": 2,
+        "avatarUrl": null
       }
     }
   }

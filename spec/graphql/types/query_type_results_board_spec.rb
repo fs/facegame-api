@@ -20,6 +20,7 @@ describe Types::QueryType do
             rate
             fullName
             score
+            avatarUrl
           }
           currentUserResult {
             rate
@@ -27,6 +28,7 @@ describe Types::QueryType do
             score
             questionsCount
             correctAnswersCount
+            avatarUrl
           }
         }
       }

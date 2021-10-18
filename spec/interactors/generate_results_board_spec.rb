@@ -27,17 +27,20 @@ describe GenerateResultsBoard do
       {
         full_name: "Rochell Jon",
         rate: 1,
-        score: 500
+        score: 500,
+        avatar_url: nil
       },
       {
         full_name: "Rosalva Lashay",
         rate: 2,
-        score: 400
+        score: 400,
+        avatar_url: nil
       },
       {
         full_name: "Jaunita Desirae",
         rate: 3,
-        score: 150
+        score: 150,
+        avatar_url: nil
       }
     ]
   end
@@ -48,7 +51,8 @@ describe GenerateResultsBoard do
       full_name: "Sommer Celena",
       questions_count: 3,
       rate: 4,
-      score: 133
+      score: 133,
+      avatar_url: nil
     }
   end
 
