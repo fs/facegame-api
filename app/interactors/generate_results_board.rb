@@ -20,7 +20,9 @@ class GenerateResultsBoard
     i = 1
     results = []
     ordered_users.limit(params[:limit]).each do |item|
-      results << { score: item.last_result&.score || 0, full_name: item.full_name, rate: i }
+      results << {
+        score: item.last_result&.score || 0, full_name: item.full_name, rate: i, avatar_url: item.avatar_url
+      }
       i += 1
     end
     results
@@ -34,7 +36,8 @@ class GenerateResultsBoard
       full_name: current_user.full_name,
       questions_count: current_user.last_result.answers.count,
       correct_answers_count: current_user.last_result.answers.correct.count,
-      rate: current_user_rate
+      rate: current_user_rate,
+      avatar_url: current_user.avatar_url
     }
   end
 
