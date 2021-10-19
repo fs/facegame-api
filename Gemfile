@@ -26,6 +26,7 @@ gem "rack-cors"
 gem "shrine"
 gem "sidekiq"
 gem "strong_migrations"
+gem "httparty"
 
 group :development do
   gem "letter_opener"
