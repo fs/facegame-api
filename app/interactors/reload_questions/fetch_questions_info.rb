@@ -1,26 +1,19 @@
-module ReloadQuestions
+class ReloadQuestions
   class FetchQuestionsInfo
     include Interactor
 
     def call
-      context.fail!(error_data: error_data) if token.blank?
-
-      user.update(confirmed_at: Time.current)
-      token.destroy
+      context.questions_info = fetch_questions_info
     end
 
     private
 
-    def token
-      @token ||= PossessionToken.find_by(value: value)
+    def fetch_questions_info
+      @fetch_questions_info ||= notion_adapter.fetch_questions
     end
 
-    def user
-      context.user ||= token.user
-    end
-
-    def error_data
-      { message: "Invalid value", status: 400, code: :bad_request }
+    def notion_adapter
+      Notion::Adapter.new
     end
   end
 end

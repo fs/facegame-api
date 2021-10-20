@@ -5,5 +5,5 @@ class ReloadQuestions
   organize ReloadQuestions::FetchQuestionsInfo,
            ReloadQuestions::PrepareParams,
            ReloadQuestions::DeleteArchivedQuestions,
-           ReloadQuestions::CreateQuestions
+           ReloadQuestions::CreateOrUpdateQuestions
 end

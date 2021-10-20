@@ -25,7 +25,7 @@ module Resolvers
     end
 
     def raw_relation
-      Question.where.not(email: current_user.email)
+      Question.kept.where.not(email: current_user.email)
     end
   end
 end

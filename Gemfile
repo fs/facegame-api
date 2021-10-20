@@ -18,6 +18,7 @@ gem "graphql"
 gem "graphql-batch"
 gem "graphql-rails_logger"
 gem "health_check"
+gem "httparty"
 gem "interactor"
 gem "jwt"
 gem "newrelic_rpm"
@@ -26,7 +27,8 @@ gem "rack-cors"
 gem "shrine"
 gem "sidekiq"
 gem "strong_migrations"
-gem "httparty"
+gem 'discard', '~> 1.2'
+gem 'open-uri'
 
 group :development do
   gem "letter_opener"
