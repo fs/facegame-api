@@ -36,7 +36,6 @@ module Notion
     end
 
     def get_photo_from_data(data)
-      byebug
       data["properties"].fetch("Photo", {})
         .fetch("files", [])
         .fetch(0, {})
@@ -45,7 +44,7 @@ module Notion
     end
 
     def get_archived_from_data(data)
-      data["properties"].fetch("Inactive").fetch("checkbox") || data["properties"].fetch("archived")
+      data["properties"].fetch("Inactive").fetch("checkbox") || data["archived"]
     end
   end
 end
