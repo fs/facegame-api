@@ -29,6 +29,7 @@ gem "sidekiq"
 gem "strong_migrations"
 gem 'discard', '~> 1.2'
 gem 'open-uri'
+gem "image_processing", "~> 1.8"
 
 group :development do
   gem "letter_opener"

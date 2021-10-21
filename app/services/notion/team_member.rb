@@ -7,10 +7,11 @@ module Notion
       @full_name = get_full_name_from_data(data)
       @department = get_department_from_data(data)
       @photo = get_photo_from_data(data)
+      @avatar_name = get_avatar_name_from_data(data)
       @archived = get_archived_from_data(data)
     end
 
-    attr_reader :email, :full_name, :department, :photo, :archived
+    attr_reader :email, :full_name, :department, :photo, :archived, :avatar_name
 
     private
 
@@ -41,6 +42,13 @@ module Notion
         .fetch(0, {})
         .fetch("file", {})
         .fetch("url", nil)
+    end
+
+    def get_avatar_name_from_data(data)
+      data["properties"].fetch("Photo", {})
+        .fetch("files", [])
+        .fetch(0, {})
+        .fetch("name", nil)
     end
 
     def get_archived_from_data(data)

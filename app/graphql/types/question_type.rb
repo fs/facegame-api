@@ -9,7 +9,8 @@ module Types
 
     field :activities, resolver: Resolvers::Activities, connection: true
 
-    delegate :avatar, to: :object
-    delegate :url, to: :avatar, prefix: true, allow_nil: true
+    def avatar_url
+      object.avatar(:small)&.url
+    end
   end
 end
