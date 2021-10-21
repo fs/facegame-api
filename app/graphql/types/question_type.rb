@@ -11,6 +11,6 @@ module Types
 
     def avatar_url
       object.avatar(:small)&.url
-    end 
+    end
   end
 end

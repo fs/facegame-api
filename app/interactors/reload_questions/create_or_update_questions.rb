@@ -11,7 +11,7 @@ class ReloadQuestions
     private
 
     def save_questions
-      updatable_questions_info.map {|item| find_or_initialize_question(item) }
+      updatable_questions_info.map { |item| find_or_initialize_question(item) }
     end
 
     def find_or_initialize_question(item)

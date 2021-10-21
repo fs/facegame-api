@@ -5,9 +5,7 @@ class ReloadQuestions
     delegate :archived_questions_emails, to: :context
 
     def call
-      archivable_questions.find_each do |question|
-        question.discard
-      end
+      archivable_questions.find_each(&:discard)
     end
 
     private

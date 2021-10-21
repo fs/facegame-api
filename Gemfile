@@ -12,6 +12,7 @@ gem "activerecord-import"
 gem "aws-sdk-s3"
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "discard", "~> 1.2"
 gem "enumerize"
 gem "google-api-client"
 gem "graphql"
@@ -19,17 +20,17 @@ gem "graphql-batch"
 gem "graphql-rails_logger"
 gem "health_check"
 gem "httparty"
+gem "image_processing", "~> 1.8"
 gem "interactor"
 gem "jwt"
 gem "newrelic_rpm"
+gem "open-uri"
 gem "puma"
 gem "rack-cors"
 gem "shrine"
 gem "sidekiq"
+gem "sidekiq-scheduler"
 gem "strong_migrations"
-gem 'discard', '~> 1.2'
-gem 'open-uri'
-gem "image_processing", "~> 1.8"
 
 group :development do
   gem "letter_opener"

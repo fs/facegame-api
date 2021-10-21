@@ -9,10 +9,10 @@ module Notion
     private
 
     def team_members
-      get_team_data.map { |item| TeamMember.new(item) }
+      team_data.map { |item| TeamMember.new(item) }
     end
 
-    def get_team_data
+    def team_data
       response = client.fetch_data
       questions = response["results"]
       while response["has_more"]
