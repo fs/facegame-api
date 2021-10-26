@@ -23,7 +23,7 @@ module Omniauth
       end
 
       def invalid_user_error
-        { message: user.errors.messages, status: 400, code: :bad_request }
+        { message: "Email should have allowed subdomain", status: 400, code: :bad_request }
       end
     end
   end
