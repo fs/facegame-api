@@ -20,12 +20,12 @@ describe Types::QueryType do
   end
 
   before do
-    create :question, email: "primary@email.ru"
-    create :question, email: "email1@example.com", full_name: "Name1"
-    create :question, email: "email2@example.com", full_name: "Name2"
-    create :question, email: "email3@example.com", full_name: "Name3"
-    create :question, email: "email4@example.com", full_name: "Name4"
-    create :question, email: "email5@example.com", full_name: "Name5"
+    create :question, email: "primary@email.ru", gender: "male"
+    create :question, email: "email1@example.com", full_name: "Name1", gender: "male"
+    create :question, email: "email2@example.com", full_name: "Name2", gender: "male"
+    create :question, email: "email3@example.com", full_name: "Name3", gender: "female"
+    create :question, email: "email4@example.com", full_name: "Name4", gender: "male"
+    create :question, email: "email5@example.com", full_name: "Name5", gender: "male"
   end
 
   it_behaves_like "graphql request", "gets current_user info" do
