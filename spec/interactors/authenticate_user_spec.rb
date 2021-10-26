@@ -7,10 +7,10 @@ describe AuthenticateUser do
     { email: email, password: password, google_auth_code: google_auth_code }
   end
 
-  let(:email) { "user@example.com" }
+  let(:email) { "user@flatstack.com" }
   let(:google_auth_code) { nil }
 
-  let!(:user) { create :user, email: "user@example.com", password: "password" }
+  let!(:user) { create :user, email: "user@flatstack.com", password: "password" }
 
   describe ".call" do
     let(:expected_context) { Interactor::Context.new(user: user) }

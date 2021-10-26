@@ -4,7 +4,7 @@
       {
         "avatarUrl": null,
         "department": "ios",
-        "email": "email1@example.com",
+        "email": "email1@flatstack.com",
         "fullName": "Name1",
         "id": "2",
         "wrongAnswers": [
@@ -16,7 +16,7 @@
       {
         "avatarUrl": null,
         "department": "ios",
-        "email": "email2@example.com",
+        "email": "email2@flatstack.com",
         "fullName": "Name2",
         "id": "3",
         "wrongAnswers": [

@@ -35,7 +35,7 @@ describe Mutations::SignIn do
   let(:oauth_service_double) { instance_double ::Google::Apis::Oauth2V2::Oauth2Service }
   let(:user_info_double) do
     instance_double ::Google::Apis::Oauth2V2::Userinfo,
-                    email: "adam@serwer.com",
+                    email: "adam@flatstack.com",
                     family_name: "Serwer",
                     given_name: "Adam",
                     hd: "example.com",

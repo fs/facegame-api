@@ -8,7 +8,7 @@ describe Mutations::SignIn do
       mutation {
         signin (
           input: {
-            email: "bilbo.baggins@shire.com",
+            email: "bilbo.baggins@flatstack.com",
             password: "#{password}"
           }
         ) {
@@ -33,7 +33,7 @@ describe Mutations::SignIn do
   end
 
   before do
-    create :user, id: 111_111, email: "bilbo.baggins@shire.com", password: "TheRing"
+    create :user, id: 111_111, email: "bilbo.baggins@flatstack.com", password: "TheRing"
   end
 
   context "with valid credentials" do

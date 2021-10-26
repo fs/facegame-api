@@ -3,12 +3,12 @@ module Omniauth
     class FindOrCreateUser
       include Interactor
 
-      delegate :user_info, to: :context
+      delegate :user_info, :user, to: :context
       delegate :email, :family_name, :given_name, :picture, to: :user_info
 
       def call
         context.user = user
-        context.fail!(error_data: error_data) unless context.user
+        context.fail!(error_data: invalid_user_error) unless user.valid?
       end
 
       private
@@ -22,8 +22,8 @@ module Omniauth
         end
       end
 
-      def error_data
-        { status: 401, code: :unauthorized, message: "Invalid credentials" }
+      def invalid_user_error
+        { message: user.errors.messages, status: 400, code: :bad_request }
       end
     end
   end

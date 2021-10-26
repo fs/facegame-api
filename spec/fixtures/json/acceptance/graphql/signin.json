@@ -5,7 +5,7 @@
       "refreshToken": ":refreshToken",
       "me": {
         "id": "111111",
-        "email": "bilbo.baggins@shire.com"
+        "email": "bilbo.baggins@flatstack.com"
       }
     }
   }

@@ -3,7 +3,7 @@ require "rails_helper"
 describe Types::QueryType do
   include_context "when time is frozen"
 
-  let(:user) { create(:user, email: "john.doe@email.me", first_name: "John", last_name: "Doe") }
+  let(:user) { create(:user, email: "john.doe@flatstack.com", first_name: "John", last_name: "Doe") }
   let!(:activity) do
     create(:activity,
            user: user,

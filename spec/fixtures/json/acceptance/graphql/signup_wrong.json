@@ -8,7 +8,7 @@
       "extensions": {
         "status": 422,
         "code": "unprocessable_entity",
-        "detail": ["Email is invalid"]
+        "detail": ["Email is invalid", "Email should have allowed subdomain"]
       },
       "locations": [
         { "line": 2, "column": 9 }
