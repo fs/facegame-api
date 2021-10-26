@@ -58,7 +58,7 @@ describe Omniauth::Google::FindOrCreateUser do
 
       let(:error_data) do
         {
-          message: { email: ["should have allowed subdomain"] },
+          message: "Email should have allowed subdomain",
           status: 400,
           code: :bad_request
         }
