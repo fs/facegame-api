@@ -3,13 +3,13 @@ class ReloadQuestions
     include Interactor
 
     def call
-      context.questions_info = fetch_questions_info
+      context.questions_info = fetch_team_members_info
     end
 
     private
 
-    def fetch_questions_info
-      @fetch_questions_info ||= notion_adapter.fetch_questions
+    def fetch_team_members_info
+      @fetch_team_members_info ||= notion_adapter.fetch_team_members
     end
 
     def notion_adapter

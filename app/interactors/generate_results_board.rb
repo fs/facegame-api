@@ -47,6 +47,6 @@ class GenerateResultsBoard
 
   def ordered_users
     @ordered_users ||= User
-      .order("last_score DESC")
+      .order("last_score DESC, updated_at DESC")
   end
 end

@@ -33,6 +33,9 @@ Rails/OutputSafety:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 

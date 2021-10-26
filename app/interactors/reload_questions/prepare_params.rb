@@ -27,9 +27,5 @@ class ReloadQuestions
           .select { |item| item.archived && item.email.present? }
           .map(&:email)
     end
-
-    def notion_adapter
-      Notion::Adapter.new
-    end
   end
 end

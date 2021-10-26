@@ -2,6 +2,6 @@ class ReloadQuestionsJob < ApplicationJob
   queue_as :recursive
 
   def perform
-    ReloadQuestions.call
+    ReloadQuestions.call!
   end
 end
