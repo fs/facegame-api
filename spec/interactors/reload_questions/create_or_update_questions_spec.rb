@@ -14,6 +14,7 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
       full_name: "Full name3",
       department: "ios",
       avatar_name: "avatar_1",
+      gender: "male",
       photo: File.open(Rails.root.join(image_path), "rb")
     )
   end
@@ -25,6 +26,7 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
       full_name: "Full name4",
       department: "ios",
       avatar_name: "avatar_2",
+      gender: "female",
       photo: File.open(Rails.root.join(image_path), "rb")
     )
   end
@@ -52,14 +54,16 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
       discarded_at: nil,
       email: "email4@email.email",
       full_name: "Full name4",
-      department: "ios"
+      department: "ios",
+      gender: "female"
     )
     expect(question1.avatar(:small).url).not_to be_nil
     expect(question2).to have_attributes(
       discarded_at: nil,
       email: "email3@email.email",
       full_name: "Full name3",
-      department: "ios"
+      department: "ios",
+      gender: "male"
     )
     expect(question2.avatar(:small).url).not_to be_nil
   end

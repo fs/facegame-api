@@ -37,8 +37,16 @@ module Notion
         department: get_department_from_data(data),
         photo: get_photo_from_data(data),
         avatar_name: get_avatar_name_from_data(data),
-        archived: get_archived_from_data(data)
+        archived: get_archived_from_data(data),
+        gender: get_gender_from_data(data)
       }
+    end
+
+    def get_gender_from_data(data)
+      data["properties"]
+        .fetch("Gender", {})
+        .fetch("select", {})
+        .fetch("name", nil)&.downcase
     end
 
     def get_email_from_data(data)

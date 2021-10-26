@@ -18,6 +18,7 @@ class ReloadQuestions
       question = Question.find_or_initialize_by(email: item.email)
       question.full_name = item.full_name
       question.department = item.department
+      question.gender = item.gender
       question.avatar = URI.open(item.photo) if question.avatar_name != item.avatar_name
       question.avatar_name = item.avatar_name
       question.discarded_at = nil
