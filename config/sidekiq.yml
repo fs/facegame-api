@@ -16,3 +16,9 @@
   - default
   - events
   - mailers
+  - recursive
+
+# Schedule
+:schedule:
+  ReloadQuestionsJob:
+    cron: '0 0 * * 0'

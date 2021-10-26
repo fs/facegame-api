@@ -10,6 +10,7 @@ Shrine.plugin :remove_attachment
 Shrine.plugin :restore_cached_data
 Shrine.plugin :validation
 Shrine.plugin :validation_helpers
+Shrine.plugin :derivatives
 
 def s3_options
   {

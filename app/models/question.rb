@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
-  include ImageUploader::Attachment(:avatar)
+  include Discard::Model
+  include QuestionImageUploader::Attachment(:avatar)
 
   validates :full_name, :department, presence: true
   validates :email, presence: true, uniqueness: true
