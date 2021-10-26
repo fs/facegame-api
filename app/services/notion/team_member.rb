@@ -9,8 +9,9 @@ module Notion
       @photo = args[:photo]
       @avatar_name = args[:avatar_name]
       @archived = args[:archived]
+      @gender = args[:gender]
     end
 
-    attr_reader :email, :full_name, :department, :photo, :archived, :avatar_name
+    attr_reader :email, :full_name, :department, :photo, :archived, :avatar_name, :gender
   end
 end

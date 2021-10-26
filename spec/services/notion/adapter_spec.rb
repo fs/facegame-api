@@ -9,6 +9,11 @@ describe Notion::Adapter do
             "Work Email" => {
               "email" => "email1@email.email"
             },
+            "Gender" => {
+              "select" => {
+                "name" => "Male"
+              }
+            },
             "Full name" => {
               "title" => [
                 {
@@ -41,6 +46,11 @@ describe Notion::Adapter do
           "properties" => {
             "Work Email" => {
               "email" => "email2@email.email"
+            },
+            "Gender" => {
+              "select" => {
+                "name" => "Female"
+              }
             }
           },
           "archived" => false
@@ -64,7 +74,8 @@ describe Notion::Adapter do
       department: "Departnment",
       photo: "photo_url",
       avatar_name: "photo_name",
-      archived: false
+      archived: false,
+      gender: "male"
     )
     expect(generated_team_members.last).to have_attributes(
       email: "email2@email.email",
@@ -72,7 +83,8 @@ describe Notion::Adapter do
       department: nil,
       photo: nil,
       avatar_name: nil,
-      archived: false
+      archived: false,
+      gender: "female"
     )
   end
 end

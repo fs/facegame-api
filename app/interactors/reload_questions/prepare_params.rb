@@ -17,7 +17,8 @@ class ReloadQuestions
           item.email.present? &&
           item.full_name.present? &&
           item.department.present? &&
-          item.photo.present?
+          item.photo.present? &&
+          item.gender.present?
       end
     end
 

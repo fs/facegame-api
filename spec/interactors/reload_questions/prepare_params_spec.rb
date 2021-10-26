@@ -11,7 +11,8 @@ describe ReloadQuestions::PrepareParams do
       email: "email1@email.email",
       full_name: "Full name1",
       department: "ios",
-      photo: "photo"
+      photo: "photo",
+      gender: "female"
     )
   end
 
@@ -21,7 +22,8 @@ describe ReloadQuestions::PrepareParams do
       email: "email2@email.email",
       full_name: "Full name2",
       department: "ios",
-      photo: "photo"
+      photo: "photo",
+      gender: "male"
     )
   end
 
@@ -31,7 +33,8 @@ describe ReloadQuestions::PrepareParams do
       email: "email3@email.email",
       full_name: "Full name3",
       department: "ios",
-      photo: "photo"
+      photo: "photo",
+      gender: "male"
     )
   end
 
@@ -41,7 +44,8 @@ describe ReloadQuestions::PrepareParams do
       email: "email4@email.email",
       full_name: "Full name4",
       department: "ios",
-      photo: "photo"
+      photo: "photo",
+      gender: "female"
     )
   end
 
