@@ -24,6 +24,7 @@ module Resolvers
     def raw_relation
       Question
         .kept
+        .where(gender: object.gender)
         .where.not(full_name: correct_answer)
         .where.not(email: current_user.email)
     end
