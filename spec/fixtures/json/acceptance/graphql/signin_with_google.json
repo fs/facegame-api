@@ -5,7 +5,7 @@
       "refreshToken": ":refreshToken",
       "me": {
         "id": ":id",
-        "email": "adam@serwer.com"
+        "email": "adam@flatstack.com"
       }
     }
   }

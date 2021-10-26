@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include ImageUploader::Attachment(:avatar)
 
+  ALLOWED_EMAIL_SUBDOMAINS = ["flatstack.com", "flatstack.dev", "scalewill.com"].freeze
+
   has_secure_password
   has_secure_token :password_reset_token
 
@@ -13,8 +15,17 @@ class User < ApplicationRecord
   validates :last_score, presence: true
   validates :email, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validate :check_email_subdomain
 
   def full_name
     [first_name, last_name].compact.join(" ")
+  end
+
+  private
+
+  def check_email_subdomain
+    return if email.split("@").last.in?(ALLOWED_EMAIL_SUBDOMAINS)
+
+    errors.add(:email, "should have allowed subdomain")
   end
 end

@@ -11,7 +11,7 @@ FactoryBot.define do
     end
 
     trait :with_data do
-      email { "adam@serwer.com" }
+      email { "adam@flatstack.com" }
       first_name { "Adam" }
       last_name { "Serwer" }
     end

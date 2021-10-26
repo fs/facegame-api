@@ -4,7 +4,7 @@ describe Mutations::UpdatePassword do
   include_context "when time is frozen"
 
   let(:user) do
-    create(:user, :with_reset_token, id: 111_111, email: "john.doe@example.com", first_name: "John", last_name: "Doe")
+    create(:user, :with_reset_token, id: 111_111, email: "john.doe@flatstack.com", first_name: "John", last_name: "Doe")
   end
 
   let(:query) do

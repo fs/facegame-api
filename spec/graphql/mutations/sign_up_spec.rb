@@ -43,7 +43,7 @@ describe Mutations::SignUp do
   end
 
   context "with valid data" do
-    let(:email) { "bilbo.baggins@shire.com" }
+    let(:email) { "bilbo.baggins@flatstack.com" }
 
     it_behaves_like "graphql request", "registers a new user" do
       let(:fixture_path) { "json/acceptance/graphql/signup.json" }

@@ -13,7 +13,7 @@ describe Mutations::UpdateUser do
       mutation {
         updateUser (
           input: {
-            email: "new_email_11@example.com",
+            email: "new_email_11@flatstack.com",
             firstName: "Randle",
             lastName: "McMurphy",
             currentPassword: "123456",

@@ -6,7 +6,7 @@ describe Mutations::RequestPasswordRecovery do
       mutation {
         requestPasswordRecovery(
           input: {
-            email: "zaphod.beeblebrox@gmail.com"
+            email: "zaphod.beeblebrox@scalewill.com"
           }
         ) {
           message
@@ -19,7 +19,7 @@ describe Mutations::RequestPasswordRecovery do
   let(:fixture_path) { "json/acceptance/graphql/request_password_recovery.json" }
 
   context "when user exists" do
-    let(:user) { create :user, email: "zaphod.beeblebrox@gmail.com" }
+    let(:user) { create :user, email: "zaphod.beeblebrox@scalewill.com" }
 
     it_behaves_like "graphql request", "returns info message"
   end
