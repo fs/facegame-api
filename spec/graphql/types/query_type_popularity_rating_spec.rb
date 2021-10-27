@@ -22,6 +22,7 @@ describe Types::QueryType do
     create :answer, question: question, correct: true
     create :answer, question: question, correct: true
     create :answer, question: question, correct: false
+    create :answer, question: question, correct: false, created_at: 8.days.ago
     create :answer, correct: true
     create :answer, correct: false
   end
