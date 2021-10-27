@@ -5,7 +5,7 @@ module Resolvers
     include AuthenticableGraphqlUser
     include ExecutionErrorResponder
 
-    type Types::ResultsBoardType, null: false
+    type Types::PopularityRatingType, null: false
 
     private
 

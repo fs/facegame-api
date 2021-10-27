@@ -1,4 +1,4 @@
-class GenerateResultsBoard
+class GeneratePopularityRating
   include Interactor
 
   delegate :current_user, to: :context

@@ -22,11 +22,11 @@ describe Types::QueryType do
   before do
     create :question, email: "primary@flatstack.com", gender: "male"
     create :question, email: "primary@scalewill.com", gender: "male"
-    create :question, email: "email1@flatstack.com", full_name: "Name1", gender: "male"
-    create :question, email: "email2@flatstack.com", full_name: "Name2", gender: "male"
-    create :question, email: "email3@flatstack.com", full_name: "Name3", gender: "female"
-    create :question, email: "email4@flatstack.com", full_name: "Name4", gender: "male"
-    create :question, email: "email5@flatstack.com", full_name: "Name5", gender: "male"
+    create :question, email: "email1@flatstack.com", full_name: "Name1", gender: "male", id: 111
+    create :question, email: "email2@flatstack.com", full_name: "Name2", gender: "male", id: 222
+    create :question, email: "email3@flatstack.com", full_name: "Name3", gender: "female", id: 333
+    create :question, email: "email4@flatstack.com", full_name: "Name4", gender: "male", id: 444
+    create :question, email: "email5@flatstack.com", full_name: "Name5", gender: "male", id: 555
   end
 
   it_behaves_like "graphql request", "gets current_user info" do
