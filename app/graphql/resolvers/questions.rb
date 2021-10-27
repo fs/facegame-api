@@ -21,11 +21,15 @@ module Resolvers
     end
 
     def filtered_relation
-      FilteredQuestionsQuery.new(raw_relation, options).all
+      FilteredQuestionsQuery.new(raw_relation, filter_options).all
     end
 
     def raw_relation
-      Question.kept.where.not(email: current_user.email)
+      Question.kept
+    end
+
+    def filter_options
+      options.merge(excluded_email: current_user.email)
     end
   end
 end
