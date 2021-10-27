@@ -18,19 +18,19 @@ module Resolvers
     end
 
     def filtered_relation
-      FilteredQuestionsQuery.new(raw_relation, options).all
+      FilteredQuestionsQuery.new(raw_relation, filter_options).all
     end
 
     def raw_relation
-      Question
-        .kept
-        .where(gender: object.gender)
-        .where.not(full_name: correct_answer)
-        .where.not(email: current_user.email)
+      Question.kept
     end
 
     def correct_answer
       @correct_answer ||= object.full_name
+    end
+
+    def filter_options
+      options.merge(excluded_email: current_user.email, excluded_full_name: correct_answer, gender: object.gender)
     end
   end
 end

@@ -21,6 +21,7 @@ describe Types::QueryType do
 
   before do
     create :question, email: "primary@flatstack.com", gender: "male"
+    create :question, email: "primary@scalewill.com", gender: "male"
     create :question, email: "email1@flatstack.com", full_name: "Name1", gender: "male"
     create :question, email: "email2@flatstack.com", full_name: "Name2", gender: "male"
     create :question, email: "email3@flatstack.com", full_name: "Name3", gender: "female"
