@@ -57,7 +57,7 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
       department: "ios",
       gender: "female"
     )
-    expect(question1.avatar(:small).url).not_to be_nil
+    expect(question1.avatar(:normal).url).not_to be_nil
     expect(question2).to have_attributes(
       discarded_at: nil,
       email: "email3@email.email",
@@ -65,6 +65,6 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
       department: "ios",
       gender: "male"
     )
-    expect(question2.avatar(:small).url).not_to be_nil
+    expect(question2.avatar(:normal).url).not_to be_nil
   end
 end

@@ -10,7 +10,7 @@ module Types
     field :activities, resolver: Resolvers::Activities, connection: true
 
     def avatar_url
-      object.avatar(:small)&.url
+      object.avatar(:normal)&.url
     end
   end
 end
