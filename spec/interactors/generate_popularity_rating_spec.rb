@@ -12,7 +12,8 @@ describe GeneratePopularityRating do
   let(:expected_data) do
     {
       answers_count: 3,
-      correct_answers_count: 2
+      correct_answers_count: 2,
+      photo_url: nil
     }
   end
 

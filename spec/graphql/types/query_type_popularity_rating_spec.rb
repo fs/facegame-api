@@ -13,6 +13,7 @@ describe Types::QueryType do
         popularityRating {
           answersCount
           correctAnswersCount
+          avatarUrl
         }
       }
     GRAPHQL

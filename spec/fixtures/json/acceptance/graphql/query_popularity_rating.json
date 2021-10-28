@@ -2,7 +2,8 @@
   "data": {
     "popularityRating": {
       "answersCount": 3,
-      "correctAnswersCount": 2
+      "correctAnswersCount": 2,
+      "avatarUrl": null
     }
   }
 }

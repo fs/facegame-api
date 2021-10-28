@@ -10,7 +10,8 @@ class QuestionImageUploader < Shrine
   Attacher.derivatives do |original|
     magick = ImageProcessing::MiniMagick.source(original)
     {
-      small: magick.resize_to_fit!(nil, 500)
+      normal: magick.resize_to_fit!(nil, 500),
+      small: magick.resize_to_fit!(nil, 100)
     }
   end
 
