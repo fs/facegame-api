@@ -13,7 +13,7 @@ describe GeneratePopularityRating do
     {
       answers_count: 3,
       correct_answers_count: 2,
-      photo_url: nil
+      avatar_url: nil
     }
   end
 
