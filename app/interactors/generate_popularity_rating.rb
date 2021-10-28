@@ -14,7 +14,7 @@ class GeneratePopularityRating
     {
       answers_count: answers.count,
       correct_answers_count: answers.correct.count,
-      photo_url: question.avatar(:small)&.url
+      avatar_url: question.avatar(:small)&.url
     }
   end
 
