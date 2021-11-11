@@ -5,7 +5,7 @@ class GeneratePopularityRating
   delegate :email, to: :current_user, prefix: true
 
   def call
-    context.data = data
+    context.data = data if question.present?
   end
 
   private
