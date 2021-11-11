@@ -36,6 +36,3 @@ describe Omniauth::Google::CheckEmailUniqness do
     end
   end
 end
-
-
-  

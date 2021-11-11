@@ -17,7 +17,7 @@ module Omniauth
       def user_exists?
         User.where("email LIKE ? AND email != ?", prepared_email_query, email).exists?
       end
-    
+
       def prepared_email_query
         "#{email.split('@')[0]}%"
       end
