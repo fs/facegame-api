@@ -7,8 +7,6 @@ module Types
     field :avatar_url, String, null: true
     field :confirmed_at, GraphQL::Types::ISO8601DateTime, null: true
 
-    field :activities, resolver: Resolvers::Activities, connection: true
-
     delegate :avatar, to: :object
     delegate :url, to: :avatar, prefix: true, allow_nil: true
   end

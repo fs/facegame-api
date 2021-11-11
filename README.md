@@ -21,33 +21,6 @@ https://rails-base-graphql-api.herokuapp.com/graphql
 1. Electron-based wrapper around GraphQL [GraphiQL](https://www.electronjs.org/apps/graphiql)
 2. Chrome extension [Altair GraphQL Client](https://chrome.google.com/webstore/detail/altair-graphql-client/flnheeellpciglgpaodhkhmapeljopja)
 
-#### How to start working with GraphQL:
-1. Choose your favorite tool for working with GraphQL
-2. Create a request for signup to get access and refresh tokens
-```ruby
-# query
-mutation SignUp($input: SignupInput!) {
-  signup(input: $input) {
-    me {
-      id
-      email
-    }
-    accessToken
-    refreshToken
-  }
-}
-
-# query variables
-{
-  "input": {
-	"email": "john.tolkien@example.com",
-  	"password": "654321",
-  	"firstName": "John",
-  	"lastName": "Tolkien"
-  }
-}
-```
-3. Use this token to send the following requests. Token sent to the "Authorization" in the header
 #### Header example
 
 ```ruby
