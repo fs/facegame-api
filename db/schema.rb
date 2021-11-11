@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_094140) do
+ActiveRecord::Schema.define(version: 2021_11_11_085432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
-
-  create_table "activities", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "body", null: false
-    t.string "event", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_activities_on_user_id"
-  end
 
   create_table "answers", force: :cascade do |t|
     t.bigint "result_id", null: false
@@ -33,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_094140) do
     t.boolean "correct", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["created_at", "question_id", "correct"], name: "index_answers_on_created_at_and_question_id_and_correct"
+    t.index ["created_at"], name: "index_answers_on_created_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["result_id"], name: "index_answers_on_result_id"
   end
@@ -74,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_094140) do
   create_table "results", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "score", default: 0, null: false
+    t.integer "time_duration", default: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_results_on_user_id"
@@ -86,16 +77,15 @@ ActiveRecord::Schema.define(version: 2021_10_27_094140) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "avatar_data"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.text "avatar_data"
     t.datetime "confirmed_at"
     t.integer "last_score", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
   end
 
-  add_foreign_key "activities", "users"
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "results"
   add_foreign_key "possession_tokens", "users"
