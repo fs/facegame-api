@@ -7,8 +7,6 @@ module Types
     field :avatar_url, String, null: true
     field :wrong_answers, resolver: Resolvers::WrongAnswers
 
-    field :activities, resolver: Resolvers::Activities, connection: true
-
     def avatar_url
       object.avatar(:normal)&.url
     end
