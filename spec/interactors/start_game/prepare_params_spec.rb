@@ -3,14 +3,21 @@ require "rails_helper"
 describe StartGame::PrepareParams do
   include_context "with interactor"
 
-  let(:initial_context) {  }
-  
-  it_behaves_like "success interactor"
+  let(:initial_context) do
+    {
+      current_user: current_user
+    }
+  end
+  let(:current_user) { create :user }
+  let(:expected_filter_options) { { excluded_email: current_user.email } }
 
-  it "prepares data about team members" do
-    interactor.run
+  describe ".call" do
+    it_behaves_like "success interactor"
 
-    expect(context.updatable_questions_info).to eq expected_updatable_questions_info
-    expect(context.archived_questions_emails).to eq expected_archived_questions_emails
+    it "prepares params" do
+      interactor.run
+
+      expect(context.filter_options).to eq(expected_filter_options)
+    end
   end
 end

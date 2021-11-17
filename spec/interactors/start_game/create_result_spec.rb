@@ -2,31 +2,29 @@ require "rails_helper"
 
 describe StartGame::CreateResult do
   include_context "with interactor"
- 
-    let(:initial_context) do
-      {
-        result: result,
-        result_params: result_params
-      }
-    end
+  include_context "when time is frozen"
 
-    let(:result) { create :result, id: 1 }
+  let(:initial_context) do
+    {
+      current_user: current_user
+    }
+  end
 
-    let(:result_params) do
-      {
-        user: current_user,
-        finished_at: 45
-      }
-    end
-    
-    let(:current_user)
+  let(:current_user) { create :user }
+  let(:created_result) { Result.last }
 
-  describe ".call"
-  it_behaves_like "success interactor"
+  describe ".call" do
+    it_behaves_like "success interactor"
 
-    it "provides generated refresh token" do
+    it "creates result" do
       interactor.run
 
-      expect(context.result).to eq(create_result)
+      expect(context.result).to be_present
+      expect(context.result).to eq(created_result)
+      expect(created_result).to have_attributes(
+        user: current_user,
+        finish_at: 55.seconds.since
+      )
     end
+  end
 end

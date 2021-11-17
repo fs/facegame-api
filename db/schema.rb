@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_131321) do
     t.integer "time_duration", default: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "finished_at", precision: 6
+    t.datetime "finish_at"
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 

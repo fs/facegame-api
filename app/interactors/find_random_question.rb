@@ -1,6 +1,6 @@
 class FindRandomQuestion
   include Interactor
-  
+
   delegate :filter_options, to: :context
 
   def call
@@ -11,7 +11,7 @@ class FindRandomQuestion
   private
 
   def question
-    @question ||= FilteredQuestionQuery.new(raw_relation, filter_options).all.sample
+    @question ||= FilteredQuestionsQuery.new(raw_relation, filter_options).all.sample
   end
 
   def raw_relation
@@ -19,6 +19,6 @@ class FindRandomQuestion
   end
 
   def error_data
-    {message: "No answers available"}
+    { message: "No answers available", code: :not_found, status: 404 }
   end
 end

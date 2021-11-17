@@ -7,15 +7,15 @@ module Mutations
     def resolve
       if start_game.success?
         start_game
-      else  
+      else
         execution_error(error_data: start_game.error_data)
       end
     end
-    
-    private 
-    
+
+    private
+
     def start_game
-      @start_game =|| ::StartGame.call(current_user: context[:current_user])
+      @start_game ||= ::StartGame.call(current_user: context[:current_user])
     end
   end
 end

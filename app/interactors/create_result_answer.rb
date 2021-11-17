@@ -15,12 +15,13 @@ class CreateResultAnswer
 
   def answer_params
     {
+      correct: false,
       question: question,
       result: result
     }
   end
 
   def error_data
-    { message: "Answer can't save" }
+    { message: "Record Invalid", detail: context.result.errors.to_a }
   end
 end
