@@ -11,7 +11,13 @@ describe FindRandomQuestion do
 
   let(:current_user) { create :user }
   let(:filter_options) { { excluded_email: current_user.email } }
-  let!(:question) { create :question }
+  let!(:question1) { create :question }
+  let!(:question2) { create :question }
+  let!(:question3) { create :question }
+
+  before do
+    srand(777)
+  end
 
   describe ".call" do
     it_behaves_like "success interactor"
@@ -20,7 +26,7 @@ describe FindRandomQuestion do
       interactor.run
 
       expect(context.question).to be_present
-      expect(context.question).to eq(question)
+      expect(context.question).to eq(question3)
     end
   end
 end

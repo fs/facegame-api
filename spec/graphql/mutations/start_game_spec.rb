@@ -1,0 +1,50 @@
+require "rails_helper"
+
+describe Mutations::StartGame, type: :request do
+  let(:user) { create :user }
+
+  let(:execution_context) { { context: { current_user: user } } }
+  let(:schema_context) { { current_user: user } }
+
+  let(:image_path) { "spec/fixtures/images/avatar.jpg" }
+
+  let!(:question1) { create :question, full_name: "FullName1" }
+  let!(:question2) { create :question, full_name: "FullName2" }
+  let!(:question3) { create :question, full_name: "FullName3" }
+  let!(:question4) { create :question, full_name: "FullName4" }
+
+  let(:created_result) { Result.last }
+
+  let(:query) do
+    <<-GRAPHQL
+    mutation {
+      startGame {
+        gameId
+        question {
+          avatarUrl
+          answerOptions
+        }
+      }
+    }
+    GRAPHQL
+  end
+
+  before do
+    srand(777)
+    question3.avatar = File.open(Rails.root.join(image_path), "rb")
+    question3.avatar_derivatives!
+    question3.save
+  end
+
+  it_behaves_like "graphql request", "return current user" do
+    let(:fixture_path) { "json/acceptance/graphql/start_game/success.json" }
+
+    let(:prepared_fixture_file) do
+      fixture_file.gsub(
+        /:avatar_url|:game_id/,
+        ":avatar_url" => question3.avatar(:normal).url,
+        ":game_id" => created_result.id
+      )
+    end
+  end
+end

@@ -2,7 +2,7 @@
 
 module Resolvers
   class AnswerOptions < Resolvers::Base
-    argument :limit, Integer, required: false, default: 4
+    argument :limit, Integer, required: false, default_value: 4
     argument :sort_by, String, required: false
 
     type [String], null: false
@@ -34,7 +34,7 @@ module Resolvers
         excluded_email: current_user.email,
         excluded_full_name: correct_answer,
         gender: object.gender,
-        limit: options[limit] - 1
+        limit: options[:limit] - 1
       }
     end
   end
