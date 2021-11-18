@@ -36,7 +36,7 @@ describe Mutations::StartGame, type: :request do
     question3.save
   end
 
-  it_behaves_like "graphql request", "return current user" do
+  it_behaves_like "graphql request", "return game_id and question" do
     let(:fixture_path) { "json/acceptance/graphql/start_game/success.json" }
 
     let(:prepared_fixture_file) do
