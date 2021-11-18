@@ -1,0 +1,16 @@
+{
+  "data": {
+    "startGame": {
+      "gameId": ":game_id",
+      "question": {
+        "answerOptions": [
+          "FullName1",
+          "FullName4",
+          "FullName2",
+          "FullName3"
+        ],
+        "avatarUrl": ":avatar_url"
+      }
+    }
+  }
+}

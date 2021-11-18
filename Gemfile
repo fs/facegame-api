@@ -12,6 +12,7 @@ gem "activerecord-import"
 gem "aws-sdk-s3"
 gem "bcrypt"
 gem "bootsnap", require: false
+gem "date", "~> 3.2", ">= 3.2.1"
 gem "discard", "~> 1.2"
 gem "enumerize"
 gem "google-api-client"

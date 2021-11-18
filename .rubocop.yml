@@ -48,6 +48,9 @@ RSpec/RepeatedDescription:
 RSpec/MessageSpies:
   EnforcedStyle: receive
 
+RSpec/LetSetup:
+  Enabled: false
+
 Capybara/FeatureMethods:
   Enabled: false
 
