@@ -7,7 +7,7 @@ describe ReloadQuestions::FetchQuestionsInfo do
 
   let(:expected_data) do
     [
-      Notion::TeamMember.new
+      Notion::Adapter::TeamMember.new
     ]
   end
 
