@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Notion::Adapter::TeamMember do
+describe Notion::Adapter do
   let(:team_members_data) do
     {
       "results" => [
