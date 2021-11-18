@@ -1,5 +1,5 @@
 class FilteredQuestionsQuery < BaseFilteredQuery
-  ALLOWED_PARAMS = %i[excluded_email gender excluded_full_name limit].freeze
+  ALLOWED_PARAMS = %i[excluded_email exluded_question_ids gender excluded_full_name limit].freeze
 
   def by_excluded_email(relation, email)
     relation.where.not("email LIKE ?", prepared_email_query(email))
@@ -7,6 +7,10 @@ class FilteredQuestionsQuery < BaseFilteredQuery
 
   def by_excluded_full_name(relation, full_name)
     relation.where.not(full_name: full_name)
+  end
+
+  def by_exluded_question_ids(relation, ids)
+    relation.where.not(id: ids)
   end
 
   def by_gender(relation, gender)

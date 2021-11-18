@@ -19,6 +19,6 @@ class FindRandomQuestion
   end
 
   def error_data
-    { message: "No answers available", code: :not_found, status: 404 }
+    { message: "No questions available", code: :not_found, status: 404 }
   end
 end
