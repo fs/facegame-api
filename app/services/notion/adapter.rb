@@ -2,6 +2,16 @@
 
 module Notion
   class Adapter
+    TeamMember = Struct.new(
+      :email,
+      :full_name,
+      :department,
+      :photo,
+      :archived,
+      :avatar_name,
+      :gender,
+      keyword_init: true
+    )
     def fetch_team_members
       team_members
     end

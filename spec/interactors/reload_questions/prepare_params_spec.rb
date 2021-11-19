@@ -6,7 +6,7 @@ describe ReloadQuestions::PrepareParams do
   let(:initial_context) { { questions_info: questions_info } }
 
   let(:archived_team_member1) do
-    Notion::TeamMember.new(
+    Notion::Adapter::TeamMember.new(
       archived: true,
       email: "email1@email.email",
       full_name: "Full name1",
@@ -17,7 +17,7 @@ describe ReloadQuestions::PrepareParams do
   end
 
   let(:archived_team_member2) do
-    Notion::TeamMember.new(
+    Notion::Adapter::TeamMember.new(
       archived: true,
       email: "email2@email.email",
       full_name: "Full name2",
@@ -28,7 +28,7 @@ describe ReloadQuestions::PrepareParams do
   end
 
   let(:active_team_member1) do
-    Notion::TeamMember.new(
+    Notion::Adapter::TeamMember.new(
       archived: false,
       email: "email3@email.email",
       full_name: "Full name3",
@@ -39,7 +39,7 @@ describe ReloadQuestions::PrepareParams do
   end
 
   let(:active_team_member2) do
-    Notion::TeamMember.new(
+    Notion::Adapter::TeamMember.new(
       archived: false,
       email: "email4@email.email",
       full_name: "Full name4",
