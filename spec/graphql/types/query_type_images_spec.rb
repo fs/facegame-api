@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe Types::QueryType do
+  include_context "with stubbed activerecord default order", model: Question, order: { id: :asc }
+
   let!(:user) { create :user, email: "primary@flatstack.com" }
   let(:token_payload) { { type: "access" } }
 
@@ -12,9 +14,9 @@ describe Types::QueryType do
     GRAPHQL
   end
 
-  let(:question1) { create :question }
-  let(:question2) { create :question }
-  let(:question3) { create :question }
+  let(:question1) { create :question, id: 111 }
+  let(:question2) { create :question, id: 222 }
+  let(:question3) { create :question, id: 333 }
   let(:image_path) { "spec/fixtures/images/avatar.jpg" }
 
   before do

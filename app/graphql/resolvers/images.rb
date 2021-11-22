@@ -2,6 +2,8 @@
 
 module Resolvers
   class Images < Resolvers::Base
+    include AuthenticableGraphqlUser
+
     type [String], null: false
 
     private
