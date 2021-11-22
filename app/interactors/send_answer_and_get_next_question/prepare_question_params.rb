@@ -13,12 +13,12 @@ class SendAnswerAndGetNextQuestion
     def filter_options
       {
         excluded_email: current_user.email,
-        exluded_question_ids: exluded_question_ids
+        excluded_question_ids: excluded_question_ids
       }
     end
 
-    def exluded_question_ids
-      @exluded_question_ids ||= result.answers.pluck(:question_id)
+    def excluded_question_ids
+      @excluded_question_ids ||= result.answers.pluck(:question_id)
     end
   end
 end

@@ -1,0 +1,16 @@
+{
+  "data": {
+    "sendAnswerAndGetNextQuestion": {
+      "correctAnswerValue": ":correct_answer_value",
+      "question": {
+        "answerOptions": [
+          "FullName1",
+          "FullName4",
+          "FullName2",
+          "FullName3"
+        ],
+        "avatarUrl": ":avatar_url"
+      }
+    }
+  }
+}
