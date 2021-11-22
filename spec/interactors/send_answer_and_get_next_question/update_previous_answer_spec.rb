@@ -16,14 +16,28 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
 
   describe ".call" do
     it_behaves_like "success interactor"
+    context "when answer is not correct" do
+      it "update previous answer" do
+        interactor.run
 
-    it "update previous answer" do
-      interactor.run
+        expect(answer).to have_attributes(
+          value: "Denis Zaharov",
+          correct: false
+        )
+      end
+    end
 
-      expect(answer).to have_attributes(
-        value: "Denis Zaharov",
-        correct: false
-      )
+    context "when answer is correct" do
+      let(:answer_value) { correct_answer_value }
+
+      it "update previous answer" do
+        interactor.run
+
+        expect(answer).to have_attributes(
+          value: "Arthur Zaharov",
+          correct: true
+        )
+      end
     end
   end
 end

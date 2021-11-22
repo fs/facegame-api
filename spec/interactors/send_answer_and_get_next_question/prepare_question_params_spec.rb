@@ -11,9 +11,9 @@ describe SendAnswerAndGetNextQuestion::PrepareQuestionParams do
   end
   let!(:result) { create :result }
   let!(:answer_1) { create :answer, result: result, correct: false, question: question_1 }
-  let(:question_1) { create :question, id: 1 }
+  let(:question_1) { create :question, id: 111 }
   let!(:answer_2) { create :answer, result: result, correct: false, question: question_2 }
-  let(:question_2) { create :question, id: 3 }
+  let(:question_2) { create :question, id: 232 }
   let(:current_user) { create :user }
   let(:filter_options) do
     {
@@ -21,7 +21,7 @@ describe SendAnswerAndGetNextQuestion::PrepareQuestionParams do
       excluded_question_ids: excluded_question_ids
     }
   end
-  let(:excluded_question_ids) { result.answers.pluck(:question_id) }
+  let(:excluded_question_ids) { [111, 232] }
 
   describe ".call" do
     it_behaves_like "success interactor"
@@ -29,7 +29,6 @@ describe SendAnswerAndGetNextQuestion::PrepareQuestionParams do
     it "prepares question params" do
       interactor.run
 
-      expect(excluded_question_ids).to eq([1, 3])
       expect(context.filter_options).to eq(filter_options)
     end
   end
