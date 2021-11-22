@@ -10,13 +10,15 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
       correct_answer_value: correct_answer_value
     }
   end
-  let(:answer_value) { "Denis Zaharov" }
   let(:answer) { create :answer, value: "Arthur Zaharov", correct: true }
   let(:correct_answer_value) { "Arthur Zaharov" }
 
   describe ".call" do
-    it_behaves_like "success interactor"
     context "when answer is not correct" do
+      let(:answer_value) { "Denis Zaharov" }
+
+      it_behaves_like "success interactor"
+
       it "update previous answer" do
         interactor.run
 
@@ -29,6 +31,8 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
 
     context "when answer is correct" do
       let(:answer_value) { correct_answer_value }
+
+      it_behaves_like "success interactor"
 
       it "update previous answer" do
         interactor.run
