@@ -7,5 +7,6 @@ class SendAnswerAndGetNextQuestion
            SendAnswerAndGetNextQuestion::UpdateResultScore,
            SendAnswerAndGetNextQuestion::PrepareQuestionParams,
            FindRandomQuestion,
-           CreateResultAnswer
+           CreateResultAnswer,
+           SendAnswerAndGetNextQuestion::SetCorrectAnswersCount
 end

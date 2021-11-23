@@ -1,15 +1,16 @@
 {
   "data": {
     "sendAnswerAndGetNextQuestion": {
-      "correctAnswerValue": ":correct_answer_value",
+      "correctAnswersCount": 2,
+      "correctAnswerValue": "Ural Sadritdinov",
       "question": {
         "answerOptions": [
+          "Ural Sadritdinov",
           "FullName1",
-          "FullName4",
-          "FullName2",
-          "FullName3"
+          "FullName3",
+          "FullName2"
         ],
-        "avatarUrl": ":avatar_url"
+        "avatarUrl": ":avatarUrl"
       }
     }
   }
