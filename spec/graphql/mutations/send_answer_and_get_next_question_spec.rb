@@ -7,10 +7,13 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   let(:schema_context) { { current_user: user } }
 
   let(:image_path) { "spec/fixtures/images/avatar.jpg" }
+
+  let(:old_question) { create :question, full_name: "FullName1" }
   let(:new_question) { create :question, full_name: "FullName2" }
   let(:question) { create :question, full_name: "Ural Sadritdinov" }
   let(:result) { create :result, user: user, finish_at: 10.minutes.since }
-  let!(:answer) { create :answer, correct: false, result: result, question: question, value: nil }
+  let!(:answer_1) { create :answer, correct: false, result: result, question: question, value: nil }
+  let!(:answer_2) { create :answer, correct: true, result: result, question: old_question }
 
   let(:query) do
     <<-GRAPHQL
@@ -33,7 +36,6 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   end
 
   before do
-    create :question, full_name: "FullName1"
     create :question, full_name: "FullName3"
     new_question.avatar = File.open(Rails.root.join(image_path), "rb")
     new_question.avatar_derivatives!
@@ -46,10 +48,8 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
 
     let(:prepared_fixture_file) do
       fixture_file.gsub(
-        /:avatarUrl|:correctAnswerValue|:correctAnswersCount/,
-        ":avatarUrl" => new_question.avatar(:normal).url,
-        ":correctAnswerValue" => answer.question.full_name,
-        ":correctAnswersCount" => result.answers.correct.count
+        /:avatarUrl/,
+        ":avatarUrl" => new_question.avatar(:normal).url
       )
     end
   end

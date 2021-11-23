@@ -1,8 +1,8 @@
 {
   "data": {
     "sendAnswerAndGetNextQuestion": {
-      "correctAnswersCount": :correctAnswersCount,
-      "correctAnswerValue": ":correctAnswerValue",
+      "correctAnswersCount": 2,
+      "correctAnswerValue": "Ural Sadritdinov",
       "question": {
         "answerOptions": [
           "Ural Sadritdinov",
