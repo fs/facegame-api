@@ -3,7 +3,6 @@ class SendAnswerAndGetNextQuestion
     include Interactor
 
     delegate :result, to: :context
-    delegate :question, to: :answer
 
     def call
       context.correct_answers_count = correct_answers_count

@@ -9,7 +9,6 @@ describe SendAnswerAndGetNextQuestion::SetCorrectAnswersCount do
     }
   end
   let(:result) { create :result }
-  let(:correct_answers_count) { 3 }
 
   before do
     create :answer, result: result, correct: true
@@ -25,7 +24,7 @@ describe SendAnswerAndGetNextQuestion::SetCorrectAnswersCount do
     it "update correct answers count" do
       interactor.run
 
-      expect(context.correct_answers_count).to eq(correct_answers_count)
+      expect(context.correct_answers_count).to eq(3)
     end
   end
 end
