@@ -7,7 +7,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   let(:schema_context) { { current_user: user } }
 
   let(:image_path) { "spec/fixtures/images/avatar.jpg" }
-
+  let(:new_question) { create :question, full_name: "FullName2" }
   let(:question) { create :question, full_name: "Ural Sadritdinov" }
   let(:result) { create :result, user: user, finish_at: 10.minutes.since }
   let!(:answer) { create :answer, correct: false, result: result, question: question, value: nil }
@@ -34,23 +34,22 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
 
   before do
     create :question, full_name: "FullName1"
-    create :question, full_name: "FullName2"
     create :question, full_name: "FullName3"
+    new_question.avatar = File.open(Rails.root.join(image_path), "rb")
+    new_question.avatar_derivatives!
+    new_question.save
     srand(777)
-    question.avatar = File.open(Rails.root.join(image_path), "rb")
-    question.avatar_derivatives!
-    question.save
   end
 
-  it_behaves_like "graphql request", "return correct_answer_value and question" do
+  it_behaves_like "graphql request", "return correct_answer_value, correct_answers_count and question" do
     let(:fixture_path) { "json/acceptance/graphql/send_answer_and_get_next_question/success.json" }
 
     let(:prepared_fixture_file) do
       fixture_file.gsub(
-        /:avatar_url|:correct_answer_value|:correct_answers_count/,
-        ":avatar_url" => question.avatar(:normal).url,
-        ":correct_answer_value" => answer.question.full_name,
-        ":correct_answers_count" => result.answers.correct.count
+        /:avatarUrl|:correctAnswerValue|:correctAnswersCount/,
+        ":avatarUrl" => new_question.avatar(:normal).url,
+        ":correctAnswerValue" => answer.question.full_name,
+        ":correctAnswersCount" => result.answers.correct.count
       )
     end
   end
