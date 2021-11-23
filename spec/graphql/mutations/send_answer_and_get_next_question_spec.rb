@@ -1,7 +1,6 @@
 require "rails_helper"
 
 describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
-  include_context "with stubbed activerecord default order", model: Question, order: { full_name: :asc }
   let(:user) { create :user }
 
   let(:execution_context) { { context: { current_user: user } } }
@@ -9,7 +8,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
 
   let(:image_path) { "spec/fixtures/images/avatar.jpg" }
 
-  let(:question) { create :question, full_name: "FullName3" }
+  let(:question) { create :question, full_name: "Ural Sadritdinov" }
   let(:result) { create :result, user: user, finish_at: 10.minutes.since }
   let!(:answer) { create :answer, correct: false, result: result, question: question, value: nil }
 
@@ -22,6 +21,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
         value: "Ural Sadritdinov"
       }
     ) {
+        correctAnswersCount
         correctAnswerValue
         question {
           answerOptions
@@ -35,7 +35,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   before do
     create :question, full_name: "FullName1"
     create :question, full_name: "FullName2"
-    create :question, full_name: "FullName4"
+    create :question, full_name: "FullName3"
     srand(777)
     question.avatar = File.open(Rails.root.join(image_path), "rb")
     question.avatar_derivatives!
@@ -47,9 +47,10 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
 
     let(:prepared_fixture_file) do
       fixture_file.gsub(
-        /:avatar_url|:correct_answer_value/,
+        /:avatar_url|:correct_answer_value|:correct_answers_count/,
         ":avatar_url" => question.avatar(:normal).url,
-        ":correct_answer_value" => answer.question.full_name
+        ":correct_answer_value" => answer.question.full_name,
+        ":correct_answers_count" => result.answers.correct.count
       )
     end
   end
