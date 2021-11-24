@@ -3,5 +3,6 @@ FactoryBot.define do
     association :question
     association :result
     value { "value" }
+    correct { false }
   end
 end

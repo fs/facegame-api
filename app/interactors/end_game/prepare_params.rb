@@ -3,7 +3,7 @@ class EndGame
     include Interactor
 
     delegate :game_id, :current_user, to: :context
-    
+
     def call
       context.fail!(error_data: error_data) if result.blank?
 

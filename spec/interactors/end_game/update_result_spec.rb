@@ -13,14 +13,13 @@ describe EndGame::UpdateResult do
   let(:result_params) { { finish_at: Time.current } }
 
   describe ".call" do
-    
     it_behaves_like "success interactor"
 
     it "update previous answer" do
       interactor.run
 
       expect(result).to have_attributes(
-        finish_at: Time.current,
+        finish_at: Time.current
       )
     end
   end

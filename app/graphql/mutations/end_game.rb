@@ -7,15 +7,16 @@ module Mutations
     type Types::ResultType
 
     def resolve(input:)
-      result = ::EndGame.call(
+      end_game_result = ::EndGame.call(
         current_user: context[:current_user],
-        game_id: input
+        game_id: input[:game_id]
       )
 
-      if result.success?
-        result
+      if end_game_result.success?
+        end_game_result.result
       else
         execution_error(error_data: result.error_data)
       end
+    end
   end
 end

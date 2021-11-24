@@ -12,7 +12,7 @@ class EndGame
 
     def result_params
       {
-        finish_at: Time.current,
+        finish_at: Time.current
       }
     end
   end

@@ -6,12 +6,11 @@ describe EndGame::PrepareParams do
   let(:initial_context) do
     {
       current_user: current_user,
-      game_id: game_id
+      game_id: result.id
     }
   end
   let(:current_user) { create :user }
-  let(:game_id) { 23 }
-  let!(:result) { create :result, id: game_id, finish_at: 10.minutes.since, user: current_user }
+  let!(:result) { create :result, id: 111, finish_at: 10.minutes.since, user: current_user }
 
   describe ".call" do
     it_behaves_like "success interactor"
