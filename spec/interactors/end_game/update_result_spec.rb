@@ -10,12 +10,11 @@ describe EndGame::UpdateResult do
     }
   end
   let(:result) { create :result, finish_at: 10.minutes.since }
-  let(:result_params) { { finish_at: Time.current } }
 
   describe ".call" do
     it_behaves_like "success interactor"
 
-    it "update previous answer" do
+    it "update result to no active" do
       interactor.run
 
       expect(result).to have_attributes(
