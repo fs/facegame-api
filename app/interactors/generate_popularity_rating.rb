@@ -12,7 +12,7 @@ class GeneratePopularityRating
 
   def data
     {
-      answers_count: answers.count,
+      answers_count: answers.answered.count,
       correct_answers_count: answers.correct.count,
       avatar_url: question.avatar(:small)&.url
     }
