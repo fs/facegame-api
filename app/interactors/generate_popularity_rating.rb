@@ -12,14 +12,14 @@ class GeneratePopularityRating
 
   def data
     {
-      answers_count: answers.answered.count,
+      answers_count: answers.count,
       correct_answers_count: answers.correct.count,
       avatar_url: question.avatar(:small)&.url
     }
   end
 
   def answers
-    @answers ||= Answer.last_week.where(question: question)
+    @answers ||= Answer.last_week.answered.where(question: question)
   end
 
   def question
