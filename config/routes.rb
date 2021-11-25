@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post "/images/upload", to: "uploads#image"
 
   post "/graphql", to: "graphql#execute"
+
+  get "/simple", to: "simples#simple"
 end
