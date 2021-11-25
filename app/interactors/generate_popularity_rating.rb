@@ -19,7 +19,7 @@ class GeneratePopularityRating
   end
 
   def answers
-    @answers ||= Answer.last_week.where(question: question)
+    @answers ||= Answer.last_week.answered.where(question: question)
   end
 
   def question
