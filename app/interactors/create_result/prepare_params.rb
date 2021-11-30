@@ -16,7 +16,7 @@ class CreateResult
         {
           question_id: answer[:question_id],
           value: answer[:value],
-          correct: question_correct?(answer)
+          status: status(answer)
         }
       end
     end
@@ -36,16 +36,17 @@ class CreateResult
     end
 
     def correct_answers_count
-      @correct_answers_count ||= prepared_answers_params.filter { |answer| answer[:correct] }.count
-    end
-
-    def answers_count
+      @correct_answers_count ||= prepared_answers_params.filter { |answer| answer[:status] == "correct" }.count
     end
 
     def question_correct?(answer)
       question = Question.find_by(id: answer[:question_id])
       context.fail!(error_data: error_data) if question.blank?
       question.full_name == answer[:value]
+    end
+
+    def status(answer)
+      question_correct?(answer) ? "correct" : "incorrect"
     end
 
     def error_data

@@ -10,7 +10,7 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
       correct_answer_value: correct_answer_value
     }
   end
-  let(:answer) { create :answer, value: "Arthur Zaharov", correct: true }
+  let(:answer) { create :answer, value: "Arthur Zaharov", status: "correct" }
   let(:correct_answer_value) { "Arthur Zaharov" }
 
   describe ".call" do
@@ -24,7 +24,7 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
 
         expect(answer).to have_attributes(
           value: "Denis Zaharov",
-          correct: false
+          status: "incorrect"
         )
       end
     end
@@ -39,7 +39,7 @@ describe SendAnswerAndGetNextQuestion::UpdatePreviousAnswer do
 
         expect(answer).to have_attributes(
           value: "Arthur Zaharov",
-          correct: true
+          status: "correct"
         )
       end
     end

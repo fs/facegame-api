@@ -31,13 +31,13 @@ describe GeneratePopularityRating do
     end
 
     before do
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: false
-      create :answer, question: question, correct: false, value: nil
-      create :answer, question: question, correct: true, created_at: 8.days.ago
-      create :answer, correct: true
-      create :answer, correct: false
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
+      create :answer, question: question, status: "pending", value: nil
+      create :answer, question: question, status: "correct", created_at: 8.days.ago
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
     end
 
     describe ".call" do

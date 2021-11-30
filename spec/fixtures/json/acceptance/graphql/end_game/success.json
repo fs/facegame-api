@@ -3,7 +3,7 @@
     "endGame": {
       "answers": [
         {
-          "correct": true,
+          "status": "correct",
           "question": {
             "fullName": "Name1",
             "id": "111"
@@ -11,7 +11,7 @@
           "value": "Name1"
         },
         {
-          "correct": false,
+          "status": "incorrect",
           "question": {
             "fullName": "Name2",
             "id": "222"
@@ -19,7 +19,7 @@
           "value": "Name1"
         },
         {
-          "correct": true,
+          "status": "correct",
           "question": {
             "fullName": "Name3",
             "id": "333"

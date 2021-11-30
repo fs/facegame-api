@@ -15,7 +15,7 @@ class CreateResultAnswer
 
   def answer_params
     {
-      correct: false,
+      status: "pending",
       question: question,
       result: result
     }

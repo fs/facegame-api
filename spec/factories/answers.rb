@@ -3,6 +3,6 @@ FactoryBot.define do
     association :question
     association :result
     value { "value" }
-    correct { false }
+    status { "pending" }
   end
 end

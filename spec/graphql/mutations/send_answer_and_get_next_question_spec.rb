@@ -12,8 +12,8 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   let(:new_question) { create :question, full_name: "FullName2" }
   let(:question) { create :question, full_name: "Ural Sadritdinov" }
   let(:result) { create :result, user: user, finish_at: 10.minutes.since }
-  let!(:answer_1) { create :answer, correct: false, result: result, question: question, value: nil }
-  let!(:answer_2) { create :answer, correct: true, result: result, question: old_question }
+  let!(:answer_1) { create :answer, status: "incorrect", result: result, question: question, value: nil }
+  let!(:answer_2) { create :answer, status: "correct", result: result, question: old_question }
 
   let(:query) do
     <<-GRAPHQL

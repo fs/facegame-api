@@ -29,12 +29,12 @@ describe Types::QueryType do
     let(:question) { create :question, email: "email@flatstack.com" }
 
     before do
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: false
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
       create :answer, question: question, correct: false, created_at: 8.days.ago
-      create :answer, correct: true
-      create :answer, correct: false
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
     end
 
     it_behaves_like "graphql request", "gets popularity info" do
