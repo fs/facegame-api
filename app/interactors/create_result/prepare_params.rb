@@ -24,7 +24,8 @@ class CreateResult
     def prepared_result_params
       {
         user: current_user,
-        score: calculate_score
+        score: calculate_score,
+        finish_at: Time.current
       }
     end
 

@@ -42,7 +42,8 @@ describe CreateResult::PrepareParams do
   let(:expected_prepared_result_params) do
     {
       user: user,
-      score: 133
+      score: 133,
+      finish_at: current_time
     }
   end
 
