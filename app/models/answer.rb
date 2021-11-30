@@ -9,6 +9,6 @@ class Answer < ApplicationRecord
   validates :result, :question, presence: true
   enumerize :status, in: AVALIABLE_STATUSES, scope: :shallow, default: :pending
 
-  scope :answered, -> { where(status: [:correct, :incorrect]) }
+  scope :answered, -> { where(status: %i[correct incorrect]) }
   scope :last_week, -> { where("created_at > ?", 1.week.ago.beginning_of_day) }
 end
