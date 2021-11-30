@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_202836) do
+ActiveRecord::Schema.define(version: 2021_11_30_171333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_202836) do
     t.boolean "correct"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status", null: false
+    t.string "status", default: "pending", null: false
     t.index ["created_at"], name: "index_answers_on_created_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["result_id"], name: "index_answers_on_result_id"
