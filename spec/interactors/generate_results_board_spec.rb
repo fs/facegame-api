@@ -64,9 +64,9 @@ describe GenerateResultsBoard do
     create :result, score: 500, user: user3
     create :result, score: 100, user: user4
 
-    create :answer, result: current_user_result, correct: true
-    create :answer, result: current_user_result, correct: true
-    create :answer, result: current_user_result, correct: false
+    create :answer, result: current_user_result, status: "correct"
+    create :answer, result: current_user_result, status: "correct"
+    create :answer, result: current_user_result, status: "incorrect"
   end
 
   describe ".call" do

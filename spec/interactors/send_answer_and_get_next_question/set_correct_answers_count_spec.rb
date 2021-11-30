@@ -11,11 +11,11 @@ describe SendAnswerAndGetNextQuestion::SetCorrectAnswersCount do
   let(:result) { create :result }
 
   before do
-    create :answer, result: result, correct: true
-    create :answer, result: result, correct: true
-    create :answer, result: result, correct: true
-    create :answer, result: result, correct: false
-    create :answer, result: result, correct: false
+    create :answer, result: result, status: "correct"
+    create :answer, result: result, status: "correct"
+    create :answer, result: result, status: "correct"
+    create :answer, result: result, status: "incorrect"
+    create :answer, result: result, status: "incorrect"
   end
 
   describe ".call" do

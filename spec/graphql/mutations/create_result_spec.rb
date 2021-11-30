@@ -30,7 +30,7 @@ describe Mutations::CreateResult do
           }
           answers {
             value
-            correct
+            status
             question {
               id
               fullName

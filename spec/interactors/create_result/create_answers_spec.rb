@@ -9,13 +9,13 @@ describe CreateResult::CreateAnswers do
   let(:prepared_answers_params) do
     [
       {
-        correct: true, question_id: 111, value: "Name1"
+        status: "correct", question_id: 111, value: "Name1"
       },
       {
-        correct: true, question_id: 222, value: "Name2"
+        status: "correct", question_id: 222, value: "Name2"
       },
       {
-        correct: false, question_id: 333, value: "Name4"
+        status: "incorrect", question_id: 333, value: "Name4"
       }
     ]
   end
@@ -36,7 +36,7 @@ describe CreateResult::CreateAnswers do
       interactor.run
 
       expect(Answer.count).to eq 3
-      expect(Answer.pluck(:correct)).to eq [true, true, false]
+      expect(Answer.pluck(:status)).to eq %w[correct correct incorrect]
     end
   end
 end

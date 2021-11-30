@@ -10,11 +10,11 @@ describe SendAnswerAndGetNextQuestion::UpdateResultScore do
   end
 
   let!(:result) { create :result, score: 0 }
-  let!(:correct_answer1) { create :answer, result: result, correct: true }
-  let!(:correct_answer2) { create :answer, result: result, correct: true }
-  let!(:correct_answer3) { create :answer, result: result, correct: true }
-  let!(:correct_answer4) { create :answer, result: result, correct: false }
-  let!(:correct_answer5) { create :answer, result: result, correct: false }
+  let!(:correct_answer1) { create :answer, result: result, status: "correct" }
+  let!(:correct_answer2) { create :answer, result: result, status: "correct" }
+  let!(:correct_answer3) { create :answer, result: result, status: "correct" }
+  let!(:correct_answer4) { create :answer, result: result, status: "incorrect" }
+  let!(:correct_answer5) { create :answer, result: result, status: "incorrect" }
   let(:answers_count) { result.answers.count }
 
   describe ".call" do

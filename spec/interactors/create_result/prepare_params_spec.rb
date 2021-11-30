@@ -29,13 +29,13 @@ describe CreateResult::PrepareParams do
   let(:expected_prepared_answers_params) do
     [
       {
-        correct: true, question_id: 111, value: "Name1"
+        status: "correct", question_id: 111, value: "Name1"
       },
       {
-        correct: true, question_id: 222, value: "Name2"
+        status: "correct", question_id: 222, value: "Name2"
       },
       {
-        correct: false, question_id: 333, value: "Name4"
+        status: "incorrect", question_id: 333, value: "Name4"
       }
     ]
   end

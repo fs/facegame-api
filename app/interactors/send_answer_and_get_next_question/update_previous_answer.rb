@@ -14,8 +14,12 @@ class SendAnswerAndGetNextQuestion
     def answer_params
       {
         value: answer_value,
-        correct: answer_value_correct?
+        status: status
       }
+    end
+
+    def status
+      answer_value_correct? ? "correct" : "incorrect"
     end
 
     def answer_value_correct?

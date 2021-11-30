@@ -22,7 +22,7 @@ describe Mutations::EndGame, type: :request do
         }
         answers {
           value
-          correct
+          status
           question {
             id
             fullName
@@ -37,9 +37,9 @@ describe Mutations::EndGame, type: :request do
     create :question, id: 111, full_name: "Name1"
     create :question, id: 222, full_name: "Name2"
     create :question, id: 333, full_name: "Name3"
-    create :answer, result: result, question_id: 111, value: "Name1", correct: true
-    create :answer, result: result, question_id: 222, value: "Name1", correct: false
-    create :answer, result: result, question_id: 333, value: "Name3", correct: true
+    create :answer, result: result, question_id: 111, value: "Name1", status: "correct"
+    create :answer, result: result, question_id: 222, value: "Name1", status: "incorrect"
+    create :answer, result: result, question_id: 333, value: "Name3", status: "correct"
   end
 
   it_behaves_like "graphql request", "returns updated user info" do
