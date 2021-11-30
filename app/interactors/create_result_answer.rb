@@ -15,7 +15,7 @@ class CreateResultAnswer
 
   def answer_params
     {
-      status: "incorrect",
+      status: "pending",
       question: question,
       result: result
     }

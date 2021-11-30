@@ -34,7 +34,7 @@ describe GeneratePopularityRating do
       create :answer, question: question, status: "correct"
       create :answer, question: question, status: "correct"
       create :answer, question: question, status: "incorrect"
-      create :answer, question: question, status: "incorrect", value: nil
+      create :answer, question: question, status: "pending", value: nil
       create :answer, question: question, status: "correct", created_at: 8.days.ago
       create :answer, status: "correct"
       create :answer, status: "incorrect"

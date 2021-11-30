@@ -12,7 +12,7 @@ describe SendAnswerAndGetNextQuestion::PrepareParams do
   let(:current_user) { create :user }
   let(:params) { { game_id: result.id, value: "Denis Zaharov" } }
   let!(:result) { create :result, finish_at: 10.minutes.since, user: current_user }
-  let!(:answer) { create :answer, value: nil, status: "incorrect", question: question, result: result }
+  let!(:answer) { create :answer, value: nil, status: "pending", question: question, result: result }
   let(:question) { create :question, full_name: "Arthur Zaharov" }
 
   describe ".call" do

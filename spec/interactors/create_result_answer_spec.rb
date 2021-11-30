@@ -22,7 +22,7 @@ describe CreateResultAnswer do
 
       expect(answer).to be_present
       expect(answer).to have_attributes(
-        status: "incorrect",
+        status: "pending",
         question: question,
         result: result
       )
