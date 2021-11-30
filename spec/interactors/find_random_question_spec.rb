@@ -10,14 +10,10 @@ describe FindRandomQuestion do
   end
 
   let(:current_user) { create :user }
-  let(:filter_options) { { excluded_email: current_user.email } }
-  let!(:question1) { create :question }
-  let!(:question2) { create :question }
+  let(:filter_options) { { excluded_email: current_user.email, excluded_question_ids: [111] } }
+  let!(:question1) { create :question, email: current_user.email }
+  let!(:question2) { create :question, id: 111 }
   let!(:question3) { create :question }
-
-  before do
-    srand(777)
-  end
 
   describe ".call" do
     it_behaves_like "success interactor"
