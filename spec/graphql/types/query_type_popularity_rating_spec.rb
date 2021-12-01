@@ -32,7 +32,7 @@ describe Types::QueryType do
       create :answer, question: question, status: "correct"
       create :answer, question: question, status: "correct"
       create :answer, question: question, status: "incorrect"
-      create :answer, question: question, correct: false, created_at: 8.days.ago
+      create :answer, question: question, status: "incorrect", created_at: 8.days.ago
       create :answer, status: "correct"
       create :answer, status: "incorrect"
     end
