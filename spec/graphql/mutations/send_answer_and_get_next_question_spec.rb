@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   let(:user) { create :user }
+  let(:result_user) { user }
 
   let(:execution_context) { { context: { current_user: user } } }
   let(:schema_context) { { current_user: user } }
@@ -12,7 +13,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
   let(:new_current_question) { create :question, full_name: "FullName2" }
   let(:new_pending_question) { create :question }
   let(:question) { create :question, full_name: "Ural Sadritdinov" }
-  let(:result) { create :result, user: user, finish_at: 10.minutes.since }
+  let(:result) { create :result, user: result_user, finish_at: 10.minutes.since }
   let!(:answer_1) { create :answer, status: "current", result: result, question: question }
   let!(:answer_2) { create :answer, status: "correct", result: result, question: old_question }
 
@@ -60,6 +61,14 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
         ":pendingAvatarUrl" => new_pending_question.avatar(:normal).url,
         ":currentAvatarUrl" => new_current_question.avatar(:normal).url
       )
+    end
+  end
+
+  context "when user not authorized to perform this action" do
+    let(:result_user) { create :user }
+
+    it_behaves_like "graphql request", "return authorization_error" do
+      let(:fixture_path) { "json/acceptance/graphql/send_answer_and_get_next_question/authorization_error.json" }
     end
   end
 end
