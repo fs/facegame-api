@@ -21,7 +21,7 @@ class SendAnswerAndGetNextQuestion
     end
 
     def answer
-      result.answers.where(value: nil).last
+      @answer ||= result.answers.current.last
     end
 
     def error_data
