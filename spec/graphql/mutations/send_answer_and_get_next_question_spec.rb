@@ -10,6 +10,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
 
   let(:old_question) { create :question, full_name: "FullName1" }
   let(:new_question) { create :question, full_name: "FullName2" }
+  let(:pending_question) { create :question }
   let(:question) { create :question, full_name: "Ural Sadritdinov" }
   let(:result) { create :result, user: user, finish_at: 10.minutes.since }
   let!(:answer_1) { create :answer, status: "incorrect", result: result, question: question, value: nil }
@@ -30,6 +31,9 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
           answerOptions
           avatarUrl
         }
+        pendingQuestion {
+          avatarUrl
+        }
       }
     }
     GRAPHQL
@@ -40,6 +44,9 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
     new_question.avatar = File.open(Rails.root.join(image_path), "rb")
     new_question.avatar_derivatives!
     new_question.save
+    pending_question.avatar = File.open(Rails.root.join(image_path), "rb")
+    pending_question.avatar_derivatives!
+    pending_question.save
     srand(777)
   end
 

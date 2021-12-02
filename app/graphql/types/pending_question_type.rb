@@ -1,5 +1,5 @@
 module Types
-  class NextQuestionUrlType < Types::BaseObject
+  class PendingQuestionType < Types::BaseObject
     field :avatar_url, String, null: true
 
     def avatar_url

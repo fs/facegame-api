@@ -11,6 +11,9 @@
           "FullName2"
         ],
         "avatarUrl": ":avatarUrl"
+      },
+      "pendingQuestion": {
+        "avatarUrl": ":avatarUrl"
       }
     }
   }

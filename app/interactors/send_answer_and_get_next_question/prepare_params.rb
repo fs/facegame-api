@@ -8,7 +8,6 @@ class SendAnswerAndGetNextQuestion
     def call
       context.fail!(error_data: error_data) if result.blank?
 
-      context.answer_value = params[:value]
       context.result = result
       context.answer = answer
       context.correct_answer_value = question.full_name
@@ -21,7 +20,7 @@ class SendAnswerAndGetNextQuestion
     end
 
     def answer
-      result.answers.where(value: nil).last
+      result.answers.current.last
     end
 
     def error_data

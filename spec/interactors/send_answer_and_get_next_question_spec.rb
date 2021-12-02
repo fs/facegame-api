@@ -9,9 +9,10 @@ describe SendAnswerAndGetNextQuestion do
         SendAnswerAndGetNextQuestion::PrepareParams,
         SendAnswerAndGetNextQuestion::UpdatePreviousAnswer,
         SendAnswerAndGetNextQuestion::UpdateResultScore,
+        SendAnswerAndGetNextQuestion::SetCurrentQuestion,
         SendAnswerAndGetNextQuestion::PrepareQuestionParams,
-        FindRandomQuestion,
-        CreateResultAnswer,
+        SendAnswerAndGetNextQuestion::FindRandomQuestion,
+        SendAnswerAndGetNextQuestion::CreateResultAnswer,
         SendAnswerAndGetNextQuestion::SetCorrectAnswersCount
       ]
     end

@@ -4,6 +4,6 @@ class StartGame
 
   organize StartGame::CreateResult,
            StartGame::PrepareParams,
-           StartGame::SetQuestions,
-           CreateResultAnswer
+           StartGame::FindQuestions,
+           StartGame::CreateResultAnswers
 end
