@@ -21,6 +21,10 @@ describe StartGame::FindQuestions do
   let!(:question3) { create :question, id: 222 }
   let!(:pending_question) { create :question, id: 333 }
 
+  before do
+    srand(666)
+  end
+
   describe ".call" do
     it_behaves_like "success interactor"
 

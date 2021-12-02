@@ -10,10 +10,10 @@
           "FullName3",
           "FullName2"
         ],
-        "avatarUrl": ":avatarUrl"
+        "avatarUrl": ":currentAvatarUrl"
       },
       "pendingQuestion": {
-        "avatarUrl": ":avatarUrl"
+        "avatarUrl": ":pendingAvatarUrl"
       }
     }
   }
