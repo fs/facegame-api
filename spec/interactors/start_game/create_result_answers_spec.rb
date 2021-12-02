@@ -14,8 +14,8 @@ describe StartGame::CreateResultAnswers do
   let(:question) { create :question }
   let(:pending_question) { create :question }
   let(:result) { create :result }
-  let(:current_answer) { Answer.last }
-  let(:pending_answer) { create :answer, question: pending_question, result: result }
+  let(:current_answer) { Answer.current.last }
+  let(:pending_answer) { Answer.pending.last }
 
   describe ".call" do
     it_behaves_like "success interactor"
