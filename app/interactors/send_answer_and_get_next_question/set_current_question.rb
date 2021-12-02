@@ -25,6 +25,7 @@ class SendAnswerAndGetNextQuestion
     end
 
     def error_data
+      byebug
       { message: "No questions available", code: :not_found, status: 404 }
     end
   end

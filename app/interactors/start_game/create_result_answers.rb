@@ -5,7 +5,7 @@ class StartGame
     delegate :question, :pending_question, :result, to: :context
 
     def call
-      context.fail!(error_data: error_data) unless current_answer.save || pending_answer.save
+      context.fail!(error_data: error_data) unless current_answer.save && pending_answer.save
     end
 
     private
