@@ -1,0 +1,24 @@
+{
+  "data": {
+    "sendAnswerAndGetNextQuestion": null
+  },
+  "errors": [
+    {
+      "extensions": {
+        "code": "unauthorized",
+        "detail": {},
+        "status": 401
+      },
+      "locations": [
+        {
+          "column": 5,
+          "line": 2
+        }
+      ],
+      "message": "You are not authorized to perform this action",
+      "path": [
+        "sendAnswerAndGetNextQuestion"
+      ]
+    }
+  ]
+}
