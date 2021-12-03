@@ -27,55 +27,41 @@ describe Types::QueryType do
   end
 
   context "when question exists" do
+    before do
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
+      create :answer, question: question, status: "incorrect", created_at: 8.days.ago
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
+    end
+
     let(:question) { create :question, email: "email@flatstack.com" }
+    let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
+    let(:fixture_path) { "json/acceptance/graphql/popularity_rating_single.json" }
 
-    context "when only one correct answer" do
-      before do
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "incorrect", created_at: 8.days.ago
-        create :answer, status: "correct"
-        create :answer, status: "incorrect"
-      end
+    context "with only one correct answer" do
+      let!(:answer) { create :answer, question: question, status: "incorrect" }
 
-      it_behaves_like "graphql request", "gets popularity info" do
-        let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-        let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating_one.json" }
-      end
+      it_behaves_like "graphql request", "gets popularity info"
 
       context "with second email" do
         let(:email) { "email@scalewill.com" }
 
-        it_behaves_like "graphql request", "gets popularity info" do
-          let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-          let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating_one.json" }
-        end
+        it_behaves_like "graphql request", "gets popularity info"
       end
     end
 
-    context "when more than one correct answers" do
-      before do
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "incorrect", created_at: 8.days.ago
-        create :answer, status: "correct"
-        create :answer, status: "incorrect"
-      end
+    context "with more than one correct answers" do
+      let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
+      let(:fixture_path) { "json/acceptance/graphql/popularity_rating_multiple.json" }
+      let!(:answer) { create :answer, question: question, status: "correct" }
 
-      it_behaves_like "graphql request", "gets popularity info" do
-        let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-        let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating.json" }
-      end
+      it_behaves_like "graphql request", "gets popularity info"
 
       context "with second email" do
         let(:email) { "email@scalewill.com" }
 
-        it_behaves_like "graphql request", "gets popularity info" do
-          let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-          let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating.json" }
-        end
+        it_behaves_like "graphql request", "gets popularity info"
       end
     end
   end

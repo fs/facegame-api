@@ -22,7 +22,16 @@ describe GeneratePopularityRating do
   context "when question exists" do
     let(:question) { create :question, email: "email@flatstack.com" }
 
-    context "when only one correct answer" do
+    before do
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
+      create :answer, question: question, status: "pending", value: nil
+      create :answer, question: question, status: "correct", created_at: 8.days.ago
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
+    end
+
+    context "with only one correct answer" do
       let(:expected_data) do
         {
           answers_count: 3,
@@ -32,15 +41,7 @@ describe GeneratePopularityRating do
         }
       end
 
-      before do
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "pending", value: nil
-        create :answer, question: question, status: "correct", created_at: 8.days.ago
-        create :answer, status: "correct"
-        create :answer, status: "incorrect"
-      end
+      let!(:answer) { create :answer, question: question, status: "incorrect" }
 
       describe ".call" do
         it_behaves_like "success interactor"
@@ -53,7 +54,7 @@ describe GeneratePopularityRating do
       end
     end
 
-    context "when more than one correct answer" do
+    context "with more than one correct answer" do
       let(:expected_data) do
         {
           answers_count: 3,
@@ -63,15 +64,7 @@ describe GeneratePopularityRating do
         }
       end
 
-      before do
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "correct"
-        create :answer, question: question, status: "incorrect"
-        create :answer, question: question, status: "pending", value: nil
-        create :answer, question: question, status: "correct", created_at: 8.days.ago
-        create :answer, status: "correct"
-        create :answer, status: "incorrect"
-      end
+      let!(:answer) { create :answer, question: question, status: "correct" }
 
       describe ".call" do
         it_behaves_like "success interactor"

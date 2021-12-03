@@ -24,11 +24,11 @@ class GeneratePopularityRating
   end
 
   def answers_count
-    answers.count
+    @answers_count ||= answers.count
   end
 
   def correct_answers_count
-    answers.correct.count
+    @correct_answers_count ||= answers.correct.count
   end
 
   def answers
