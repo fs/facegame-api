@@ -29,7 +29,7 @@ describe Mutations::SendAnswerAndGetNextQuestion, type: :request do
         correctAnswersCount
         correctAnswerValue
         question {
-          answerOptions
+          answerOptions(sortBy: "id")
           avatarUrl
         }
         pendingQuestion {
