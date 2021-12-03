@@ -20,12 +20,7 @@ class GeneratePopularityRating
   end
 
   def statistic
-    string = "#{correct_answers_count} of #{answers_count} time"
-    if correct_answers_count == 1
-      string
-    else
-      string + "s"
-    end
+    "#{correct_answers_count} of #{answers_count} #{'time'.pluralize(correct_answers_count)}"
   end
 
   def answers_count
