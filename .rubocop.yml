@@ -47,6 +47,9 @@ RSpec/RepeatedDescription:
 
 RSpec/MessageSpies:
   EnforcedStyle: receive
+  
+RSpec/NestedGroups:
+  Enabled: false
 
 RSpec/LetSetup:
   Enabled: false
