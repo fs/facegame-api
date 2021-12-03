@@ -22,7 +22,7 @@ describe Mutations::StartGame, type: :request do
         gameId
         question {
           avatarUrl
-          answerOptions
+          answerOptions(sortBy: "id")
         }
         pendingQuestion {
           avatarUrl
