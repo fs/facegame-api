@@ -12,10 +12,28 @@ class GeneratePopularityRating
 
   def data
     {
-      answers_count: answers.count,
-      correct_answers_count: answers.correct.count,
+      answers_count: answers_count,
+      correct_answers_count: correct_answers_count,
+      statistic: statistic,
       avatar_url: question.avatar(:small)&.url
     }
+  end
+
+  def statistic
+    string = "#{correct_answers_count} of #{answers_count} time"
+    if correct_answers_count == 1
+      string
+    else
+      string + "s"
+    end
+  end
+
+  def answers_count
+    answers.count
+  end
+
+  def correct_answers_count
+    answers.correct.count
   end
 
   def answers

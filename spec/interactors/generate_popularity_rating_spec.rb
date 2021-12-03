@@ -22,43 +22,77 @@ describe GeneratePopularityRating do
   context "when question exists" do
     let(:question) { create :question, email: "email@flatstack.com" }
 
-    let(:expected_data) do
-      {
-        answers_count: 3,
-        correct_answers_count: 2,
-        avatar_url: nil
-      }
-    end
+    context "when only one correct answer" do
+      let(:expected_data) do
+        {
+          answers_count: 3,
+          correct_answers_count: 1,
+          statistic: "1 of 3 time",
+          avatar_url: nil
+        }
+      end
 
-    before do
-      create :answer, question: question, status: "correct"
-      create :answer, question: question, status: "correct"
-      create :answer, question: question, status: "incorrect"
-      create :answer, question: question, status: "pending", value: nil
-      create :answer, question: question, status: "correct", created_at: 8.days.ago
-      create :answer, status: "correct"
-      create :answer, status: "incorrect"
-    end
+      before do
+        create :answer, question: question, status: "correct"
+        create :answer, question: question, status: "incorrect"
+        create :answer, question: question, status: "incorrect"
+        create :answer, question: question, status: "pending", value: nil
+        create :answer, question: question, status: "correct", created_at: 8.days.ago
+        create :answer, status: "correct"
+        create :answer, status: "incorrect"
+      end
 
-    describe ".call" do
-      it_behaves_like "success interactor"
+      describe ".call" do
+        it_behaves_like "success interactor"
 
-      it "creates popularity rating" do
-        interactor.run
+        it "creates popularity rating" do
+          interactor.run
 
-        expect(context.data).to eq expected_data
+          expect(context.data).to eq expected_data
+        end
       end
     end
 
-    context "with second email" do
-      let(:email) { "email@scalewill.com" }
+    context "when more than one correct answer" do
+      let(:expected_data) do
+        {
+          answers_count: 3,
+          correct_answers_count: 2,
+          statistic: "2 of 3 times",
+          avatar_url: nil
+        }
+      end
 
-      it_behaves_like "success interactor"
+      before do
+        create :answer, question: question, status: "correct"
+        create :answer, question: question, status: "correct"
+        create :answer, question: question, status: "incorrect"
+        create :answer, question: question, status: "pending", value: nil
+        create :answer, question: question, status: "correct", created_at: 8.days.ago
+        create :answer, status: "correct"
+        create :answer, status: "incorrect"
+      end
 
-      it "creates popularity rating" do
-        interactor.run
+      describe ".call" do
+        it_behaves_like "success interactor"
 
-        expect(context.data).to eq expected_data
+        it "creates popularity rating" do
+          interactor.run
+
+          expect(context.data).to eq expected_data
+        end
+      end
+
+      context "with second email" do
+        let(:email) { "email@scalewill.com" }
+
+        it_behaves_like "success interactor"
+
+        it "creates popularity rating" do
+          interactor.run
+
+          expect(context.data).to eq expected_data
+        end
       end
     end
   end
