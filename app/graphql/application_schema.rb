@@ -1,7 +1,7 @@
 require "graphql/batch"
 
 class ApplicationSchema < GraphQL::Schema
-  disable_introspection_entry_points if Rails.env.production?
+  disable_introspection_entry_points if ENV.fetch("HIDE_GRAPHQL_SCHEMA", false)
 
   mutation(Types::MutationType)
   query(Types::QueryType)
