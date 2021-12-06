@@ -17,17 +17,6 @@ describe Mutations::EndGame, type: :request do
       }
     ) {
         score
-        user {
-          id
-        }
-        answers {
-          value
-          status
-          question {
-            id
-            fullName
-          }
-        }
       }
     }
     GRAPHQL
