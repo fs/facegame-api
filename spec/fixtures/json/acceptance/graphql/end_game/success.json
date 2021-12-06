@@ -1,36 +1,7 @@
 {
   "data": {
     "endGame": {
-      "answers": [
-        {
-          "status": "correct",
-          "question": {
-            "fullName": "Name1",
-            "id": "111"
-          },
-          "value": "Name1"
-        },
-        {
-          "status": "incorrect",
-          "question": {
-            "fullName": "Name2",
-            "id": "222"
-          }, 
-          "value": "Name1"
-        },
-        {
-          "status": "correct",
-          "question": {
-            "fullName": "Name3",
-            "id": "333"
-          }, 
-          "value": "Name3"
-        }
-      ],
-      "score": 133,
-      "user": {
-        "id": "111"
-      }
+      "score": 133
     }
   }
 }
