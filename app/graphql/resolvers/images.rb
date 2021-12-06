@@ -3,6 +3,7 @@
 module Resolvers
   class Images < Resolvers::Base
     include AuthenticableGraphqlUser
+    include ExecutionErrorResponder
 
     type [String], null: false
 

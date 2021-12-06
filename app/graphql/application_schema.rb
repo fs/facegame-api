@@ -1,6 +1,8 @@
 require "graphql/batch"
 
 class ApplicationSchema < GraphQL::Schema
+  disable_introspection_entry_points if Settings.hide_graphql_schema?
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 
