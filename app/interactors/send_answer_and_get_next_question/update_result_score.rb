@@ -28,7 +28,7 @@ class SendAnswerAndGetNextQuestion
     end
 
     def answers_count
-      @answers_count ||= result.answers.count
+      @answers_count ||= result.answers.answered.count
     end
   end
 end
