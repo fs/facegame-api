@@ -4,7 +4,7 @@ Sidekiq::Web.use ActionDispatch::Cookies
 Sidekiq::Web.use ActionDispatch::Session::CookieStore, key: "_interslice_session"
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web, at: "/sidekiq" if ENV.fetch("SHOW_SIDEKIQ_WEB", true)
+  mount Sidekiq::Web, at: "/sidekiq" if Settings.show_sidekiq_web?
 
   post "/images/upload", to: "uploads#image"
 

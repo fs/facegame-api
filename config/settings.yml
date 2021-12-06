@@ -1,0 +1,14 @@
+defaults: &defaults
+  hide_graphql_schema?: <%= false %>
+  show_sidekiq_web?: <%= true %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  hide_graphql_schema?: <%= ENV["HIDE_GRAPHQL_SCHEMA"] == "true" %>
+  show_sidekiq_web?: <%= ENV["SHOW_SIDEKIQ_WEB"] == "true" %>

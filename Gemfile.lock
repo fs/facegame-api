@@ -334,6 +334,7 @@ GEM
     ruby2_keywords (0.0.5)
     rufus-scheduler (3.8.0)
       fugit (~> 1.1, >= 1.1.6)
+    settingslogic (2.0.9)
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
@@ -431,6 +432,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
+  settingslogic
   shrine
   sidekiq
   sidekiq-scheduler
