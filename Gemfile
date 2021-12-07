@@ -37,6 +37,8 @@ gem "strong_migrations"
 group :development do
   gem "letter_opener"
   gem "listen"
+  gem "pg_query", ">= 0.9.0"
+  gem "pghero"
   gem "spring"
   gem "spring-watcher-listen"
 end
