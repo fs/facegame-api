@@ -10,8 +10,7 @@ describe Types::QueryType do
     <<-GRAPHQL
       query {
         popularityRating {
-          answersCount
-          correctAnswersCount
+          statistic
           avatarUrl
         }
       }
@@ -26,28 +25,41 @@ describe Types::QueryType do
   end
 
   context "when question exists" do
-    let(:question) { create :question, email: "email@flatstack.com" }
-
     before do
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: false
-      create :answer, question: question, correct: false, created_at: 8.days.ago
-      create :answer, correct: true
-      create :answer, correct: false
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
+      create :answer, question: question, status: "incorrect", created_at: 8.days.ago
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
     end
 
-    it_behaves_like "graphql request", "gets popularity info" do
+    let(:question) { create :question, email: "email@flatstack.com" }
+    let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
+    let(:fixture_path) { "json/acceptance/graphql/popularity_rating_single.json" }
+
+    context "with only one correct answer" do
+      let!(:answer) { create :answer, question: question, status: "incorrect" }
+
+      it_behaves_like "graphql request", "gets popularity info"
+
+      context "with second email" do
+        let(:email) { "email@scalewill.com" }
+
+        it_behaves_like "graphql request", "gets popularity info"
+      end
+    end
+
+    context "with more than one correct answers" do
       let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-      let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating.json" }
-    end
+      let(:fixture_path) { "json/acceptance/graphql/popularity_rating_multiple.json" }
+      let!(:answer) { create :answer, question: question, status: "correct" }
 
-    context "with second email" do
-      let(:email) { "email@scalewill.com" }
+      it_behaves_like "graphql request", "gets popularity info"
 
-      it_behaves_like "graphql request", "gets popularity info" do
-        let(:schema_context) { { current_user: user, token_payload: token_payload.stringify_keys } }
-        let(:fixture_path) { "json/acceptance/graphql/query_popularity_rating.json" }
+      context "with second email" do
+        let(:email) { "email@scalewill.com" }
+
+        it_behaves_like "graphql request", "gets popularity info"
       end
     end
   end

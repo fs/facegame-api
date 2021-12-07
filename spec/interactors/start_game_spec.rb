@@ -8,8 +8,8 @@ describe StartGame do
       [
         StartGame::CreateResult,
         StartGame::PrepareParams,
-        FindRandomQuestion,
-        CreateResultAnswer
+        StartGame::FindQuestions,
+        StartGame::CreateResultAnswers
       ]
     end
 

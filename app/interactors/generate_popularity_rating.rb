@@ -12,10 +12,21 @@ class GeneratePopularityRating
 
   def data
     {
-      answers_count: answers.count,
-      correct_answers_count: answers.correct.count,
+      statistic: statistic,
       avatar_url: question.avatar(:small)&.url
     }
+  end
+
+  def statistic
+    "#{correct_answers_count} of #{answers_count} #{'time'.pluralize(correct_answers_count)}"
+  end
+
+  def answers_count
+    @answers_count ||= answers.count
+  end
+
+  def correct_answers_count
+    @correct_answers_count ||= answers.correct.count
   end
 
   def answers

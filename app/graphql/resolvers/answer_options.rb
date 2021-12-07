@@ -3,7 +3,7 @@
 module Resolvers
   class AnswerOptions < Resolvers::Base
     argument :limit, Integer, required: false, default_value: 4
-    argument :sort_by, String, required: false
+    argument :sort_by, String, required: false, default_value: "random"
 
     type [String], null: false
 

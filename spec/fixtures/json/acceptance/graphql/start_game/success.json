@@ -4,12 +4,15 @@
       "gameId": ":game_id",
       "question": {
         "answerOptions": [
-          "FullName1",
-          "FullName4",
           "FullName2",
+          "FullName4",
+          "FullName1",
           "FullName3"
         ],
         "avatarUrl": ":avatar_url"
+      },
+      "pendingQuestion": {
+        "avatarUrl": ":pending_avatar_url"
       }
     }
   }

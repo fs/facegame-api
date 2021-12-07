@@ -10,9 +10,9 @@ describe SendAnswerAndGetNextQuestion::PrepareQuestionParams do
     }
   end
   let!(:result) { create :result }
-  let!(:answer_1) { create :answer, result: result, correct: false, question: question_1 }
+  let!(:answer_1) { create :answer, result: result, status: "incorrect", question: question_1 }
   let(:question_1) { create :question, id: 111 }
-  let!(:answer_2) { create :answer, result: result, correct: false, question: question_2 }
+  let!(:answer_2) { create :answer, result: result, status: "incorrect", question: question_2 }
   let(:question_2) { create :question, id: 232 }
   let(:current_user) { create :user }
   let(:filter_options) do

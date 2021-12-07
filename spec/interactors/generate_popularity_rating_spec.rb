@@ -22,43 +22,66 @@ describe GeneratePopularityRating do
   context "when question exists" do
     let(:question) { create :question, email: "email@flatstack.com" }
 
-    let(:expected_data) do
-      {
-        answers_count: 3,
-        correct_answers_count: 2,
-        avatar_url: nil
-      }
-    end
-
     before do
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: true
-      create :answer, question: question, correct: false
-      create :answer, question: question, correct: false, value: nil
-      create :answer, question: question, correct: true, created_at: 8.days.ago
-      create :answer, correct: true
-      create :answer, correct: false
+      create :answer, question: question, status: "correct"
+      create :answer, question: question, status: "incorrect"
+      create :answer, question: question, status: "pending", value: nil
+      create :answer, question: question, status: "correct", created_at: 8.days.ago
+      create :answer, status: "correct"
+      create :answer, status: "incorrect"
     end
 
-    describe ".call" do
-      it_behaves_like "success interactor"
+    context "with only one correct answer" do
+      let(:expected_data) do
+        {
+          statistic: "1 of 3 time",
+          avatar_url: nil
+        }
+      end
 
-      it "creates popularity rating" do
-        interactor.run
+      let!(:answer) { create :answer, question: question, status: "incorrect" }
 
-        expect(context.data).to eq expected_data
+      describe ".call" do
+        it_behaves_like "success interactor"
+
+        it "creates popularity rating" do
+          interactor.run
+
+          expect(context.data).to eq expected_data
+        end
       end
     end
 
-    context "with second email" do
-      let(:email) { "email@scalewill.com" }
+    context "with more than one correct answer" do
+      let(:expected_data) do
+        {
+          statistic: "2 of 3 times",
+          avatar_url: nil
+        }
+      end
 
-      it_behaves_like "success interactor"
+      let!(:answer) { create :answer, question: question, status: "correct" }
 
-      it "creates popularity rating" do
-        interactor.run
+      describe ".call" do
+        it_behaves_like "success interactor"
 
-        expect(context.data).to eq expected_data
+        it "creates popularity rating" do
+          interactor.run
+
+          expect(context.data).to eq expected_data
+        end
+      end
+
+      context "with second email" do
+        let(:email) { "email@scalewill.com" }
+
+        it_behaves_like "success interactor"
+
+        it "creates popularity rating" do
+          interactor.run
+
+          expect(context.data).to eq expected_data
+        end
       end
     end
   end

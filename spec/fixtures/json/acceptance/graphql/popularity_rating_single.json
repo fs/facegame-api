@@ -1,8 +1,7 @@
 {
   "data": {
     "popularityRating": {
-      "answersCount": 3,
-      "correctAnswersCount": 2,
+      "statistic": "1 of 3 time",
       "avatarUrl": null
     }
   }
