@@ -12,8 +12,6 @@ class GeneratePopularityRating
 
   def data
     {
-      answers_count: answers_count,
-      correct_answers_count: correct_answers_count,
       statistic: statistic,
       avatar_url: question.avatar(:small)&.url
     }

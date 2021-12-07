@@ -34,8 +34,6 @@ describe GeneratePopularityRating do
     context "with only one correct answer" do
       let(:expected_data) do
         {
-          answers_count: 3,
-          correct_answers_count: 1,
           statistic: "1 of 3 time",
           avatar_url: nil
         }
@@ -57,8 +55,6 @@ describe GeneratePopularityRating do
     context "with more than one correct answer" do
       let(:expected_data) do
         {
-          answers_count: 3,
-          correct_answers_count: 2,
           statistic: "2 of 3 times",
           avatar_url: nil
         }

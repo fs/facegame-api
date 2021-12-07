@@ -10,8 +10,6 @@ describe Types::QueryType do
     <<-GRAPHQL
       query {
         popularityRating {
-          answersCount
-          correctAnswersCount
           statistic
           avatarUrl
         }
