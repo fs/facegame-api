@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include ImageUploader::Attachment(:avatar)
 
-  ALLOWED_EMAIL_SUBDOMAINS = ["flatstack.com", "flatstack.dev", "scalewill.com"].freeze
+  ALLOWED_EMAIL_SUBDOMAINS = ["flatstack.com", "flatstack.dev", "scalewill.com", "launchpad-kazan.com"].freeze
 
   has_secure_password
   has_secure_token :password_reset_token

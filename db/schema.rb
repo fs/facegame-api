@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_081122) do
+ActiveRecord::Schema.define(version: 2021_12_08_095206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
-  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_081122) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "status", default: "pending", null: false
     t.index ["created_at"], name: "index_answers_on_created_at"
+    t.index ["question_id", "created_at"], name: "index_answers_on_question_id_and_created_at"
     t.index ["question_id"], name: "index_answers_on_question_id"
     t.index ["result_id"], name: "index_answers_on_result_id"
     t.index ["status"], name: "index_answers_on_status"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_081122) do
   create_table "results", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "score", default: 0, null: false
+    t.integer "time_duration", default: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "finish_at"
@@ -88,9 +89,9 @@ ActiveRecord::Schema.define(version: 2021_12_01_081122) do
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "avatar_data"
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
-    t.text "avatar_data"
     t.datetime "confirmed_at"
     t.integer "last_score", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
