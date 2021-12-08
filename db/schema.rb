@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 2021_12_08_095206) do
   create_table "results", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "score", default: 0, null: false
-    t.integer "time_duration", default: 30, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "finish_at"
