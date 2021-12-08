@@ -46,7 +46,7 @@ class GenerateResultsBoard
   end
 
   def ordered_users
-    @ordered_users ||= last_results_of_users.sort_by(&:score).reverse.map(&:user)
+    last_results_of_users.sort_by { |i| [i.score, i.finish_at] }.reverse.map(&:user)
   end
 
   def last_results_of_users
