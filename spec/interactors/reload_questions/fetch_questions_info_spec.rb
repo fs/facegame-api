@@ -3,16 +3,18 @@ require "rails_helper"
 describe ReloadQuestions::FetchQuestionsInfo do
   include_context "with interactor"
 
-  let(:initial_context) { {} }
+  let(:initial_context) { { provider: provider } }
 
   let(:expected_data) do
     [
-      Notion::Adapter::TeamMember.new
+      QuestionsGeneration::BaseAdapter::TeamMember.new
     ]
   end
 
+  let(:provider) { "notion" }
+
   before do
-    allow_any_instance_of(Notion::Adapter).to receive(:fetch_team_members)
+    allow_any_instance_of(QuestionsGeneration::NotionAdapter).to receive(:fetch_team_members)
       .and_return(expected_data)
   end
 
