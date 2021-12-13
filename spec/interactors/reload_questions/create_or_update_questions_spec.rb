@@ -8,7 +8,7 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
   let(:image_path) { "spec/fixtures/images/avatar.jpg" }
 
   let(:active_team_member1) do
-    Notion::Adapter::TeamMember.new(
+    QuestionsGeneration::BaseAdapter::TeamMember.new(
       archived: false,
       email: "email3@email.email",
       full_name: "Full name3",
@@ -20,7 +20,7 @@ describe ReloadQuestions::CreateOrUpdateQuestions do
   end
 
   let(:active_team_member2) do
-    Notion::Adapter::TeamMember.new(
+    QuestionsGeneration::BaseAdapter::TeamMember.new(
       archived: false,
       email: "email4@email.email",
       full_name: "Full name4",
